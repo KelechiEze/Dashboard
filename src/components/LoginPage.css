@@ -1,0 +1,282 @@
+/* General Page Styling */
+.login-page {
+    font-family: "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f9fafe; /* Light background */
+    min-height: 100vh;
+  }
+  
+  /* Header Styling */
+  .login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .account-login {
+    display: inline-block;
+    background-color: #e0e7ff; /* Light blue */
+    color: #6366f1; /* Blue text */
+    font-size: 0.85rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .login-title {
+    font-size: 1.6rem;
+    color: #1f2937; /* Dark gray */
+    margin: 0;
+  }
+  
+  /* Form Styling */
+  .login-form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.3rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .form-heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937; /* Dark gray */
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+  
+  .form-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #4b5563; /* Neutral gray */
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: #374151; /* Dark gray */
+    border: 1px solid #e5e7eb; /* Light gray */
+    border-radius: 0.3rem;
+    background-color: #f9fafb; /* Light background */
+    outline: none;
+    transition: all 0.2s;
+  }
+  
+  .form-input:focus {
+    border-color: #6366f1; /* Focus blue border */
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3); /* Subtle focus shadow */
+  }
+  
+  /* Footer Styling */
+  .form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .remember-me {
+    font-size: 0.9rem;
+    color: #4b5563; /* Neutral gray */
+  }
+  
+  .forgot-password {
+    font-size: 0.9rem;
+    color: #6366f1; /* Blue */
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  
+  /* Submit Button */
+  .submit-button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #6366f1; /* Blue */
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #4f46e5; /* Darker blue */
+  }
+  
+  .arrow {
+    margin-left: 0.5rem;
+  }
+
+  .register-link {
+    color: #6366f1; /* Blue color for link */
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+    color: #4f46e5; /* Darker blue */
+  }
+  
+  .register-prompt {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #4b5563; /* Neutral gray */
+  }
+  @media screen and (max-width: 375px) {
+    /* General Page Styling */
+    .login-page {
+      padding: 1rem; /* Reduce padding for smaller screens */
+    }
+  
+    /* Header Styling */
+    .login-header {
+      margin-bottom: 1.5rem; /* Adjust spacing */
+    }
+  
+    .login-title {
+      font-size: 1.4rem; /* Slightly smaller title font size */
+    }
+  
+    .account-login {
+      font-size: 0.8rem; /* Slightly smaller badge text */
+      padding: 0.1rem 0.4rem; /* Reduce padding */
+    }
+  
+    /* Form Styling */
+    .login-form {
+      padding: 1.5rem; /* Reduce form padding */
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Slightly lighter shadow */
+    }
+  
+    .form-heading {
+      font-size: 1rem; /* Reduce heading size */
+      margin-bottom: 1rem; /* Adjust spacing */
+    }
+  
+    .form-input {
+      padding: 0.6rem; /* Reduce input padding */
+      font-size: 0.9rem; /* Slightly smaller font size */
+    }
+  
+    /* Footer Styling */
+    .form-footer {
+      flex-direction: column; /* Stack remember me and forgot password */
+      align-items: flex-start; /* Align items to the left */
+      gap: 0.5rem; /* Add spacing between items */
+    }
+  
+    .remember-me {
+      font-size: 0.85rem; /* Slightly smaller font size */
+    }
+  
+    .forgot-password {
+      font-size: 0.85rem; /* Slightly smaller font size */
+    }
+  
+    /* Submit Button */
+    .submit-button {
+      font-size: 0.9rem; /* Reduce button font size */
+      padding: 0.7rem; /* Adjust padding */
+    }
+  
+    .arrow {
+      margin-left: 0.3rem; /* Reduce spacing */
+    }
+  
+    /* Register Prompt */
+    .register-prompt {
+      font-size: 0.85rem; /* Slightly smaller font size */
+      margin-top: 0.8rem; /* Adjust spacing */
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    /* General Page Styling */
+    .login-page {
+      padding: 1rem; /* Reduce padding for smaller screens */
+    }
+  
+    /* Header Styling */
+    .login-header {
+      margin-bottom: 1.5rem; /* Adjust spacing */
+    }
+  
+    .login-title {
+      font-size: 1.4rem; /* Slightly smaller title font size */
+    }
+  
+    .account-login {
+      font-size: 0.8rem; /* Slightly smaller badge text */
+      padding: 0.1rem 0.4rem; /* Reduce padding */
+    }
+  
+    /* Form Styling */
+    .login-form {
+      padding: 1.5rem; /* Reduce form padding */
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Slightly lighter shadow */
+    }
+  
+    .form-heading {
+      font-size: 1rem; /* Reduce heading size */
+      margin-bottom: 1rem; /* Adjust spacing */
+    }
+  
+    .form-input {
+      padding: 0.6rem; /* Reduce input padding */
+      font-size: 0.9rem; /* Slightly smaller font size */
+    }
+  
+    /* Footer Styling */
+    .form-footer {
+      flex-direction: column; /* Stack remember me and forgot password */
+      align-items: flex-start; /* Align items to the left */
+      gap: 0.5rem; /* Add spacing between items */
+    }
+  
+    .remember-me {
+      font-size: 0.85rem; /* Slightly smaller font size */
+    }
+  
+    .forgot-password {
+      font-size: 0.85rem; /* Slightly smaller font size */
+    }
+  
+    /* Submit Button */
+    .submit-button {
+      font-size: 0.9rem; /* Reduce button font size */
+      padding: 0.7rem; /* Adjust padding */
+    }
+  
+    .arrow {
+      margin-left: 0.3rem; /* Reduce spacing */
+    }
+  
+    /* Register Prompt */
+    .register-prompt {
+      font-size: 0.85rem; /* Slightly smaller font size */
+      margin-top: 0.8rem; /* Adjust spacing */
+    }
+  }
+
+  
+  
+  

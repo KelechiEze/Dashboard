@@ -1,0 +1,390 @@
+/* Overall Page Styling */
+.register-page {
+    font-family: "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f3f4f6; /* Light background */
+    min-height: 100vh;
+  }
+  
+  /* Header Styling */
+  .register-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .account-create {
+    display: inline-block;
+    background-color: #e0e7ff; /* Light blue */
+    color: #6366f1; /* Blue text */
+    font-size: 0.85rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .register-title {
+    font-size: 1.6rem;
+    color: #1f2937; /* Dark gray */
+    margin: 0;
+  }
+  
+  /* Form Styling */
+  .register-form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.3rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .form-heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937; /* Dark gray */
+    margin-bottom: 1.5rem;
+  }
+
+  .texting {
+    text-align: center;
+    color: grey;
+    margin-top: 15px;
+  }
+  
+  /* Input Group Styling */
+  .form-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-input {
+    flex: 1;
+    padding: 0.8rem;
+    width: 70%;
+    font-size: 1rem;
+    color: grey;
+    border: 1px solid #e5e7eb; /* Light gray */
+    border-radius: 0.3rem;
+    background-color: #f9fafb; /* Light background */
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  .form-input::placeholder {
+    font-size: 15px;
+  }
+  
+  .form-input:focus {
+    border-color: #6366f1; /* Focus blue border */
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3); /* Subtle focus shadow */
+  }
+
+  .login-link {
+    color: #6366f1; /* Blue color for links */
+    text-decoration: none;
+    font-weight: 400;
+  }
+  
+  .login-link:hover {
+    text-decoration: underline;
+  }
+  
+  
+  /* Footer Styling */
+  .form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .remember-me {
+    font-size: 0.9rem;
+    color: #4b5563; /* Neutral gray */
+  }
+  
+  .forgot-password {
+    font-size: 0.9rem;
+    color: #6366f1; /* Blue */
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .forgot-password:hover {
+    color: #4338ca; /* Darker blue */
+  }
+  
+  /* Submit Button Styling */
+  .submit-button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #6366f1; /* Blue */
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #4f46e5; /* Darker blue */
+  }
+  
+  /* Modal overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* Modal content */
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal p {
+    margin: 0 0 16px;
+    font-size: 15px;
+    color: #333;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+  }
+  
+  .modal-close-button, .modal-login-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modal-close-button {
+    background-color: #d1d5db; /* Gray */
+    color: #1f2937; /* Dark gray */
+  }
+  
+  .modal-close-button:hover {
+    background-color: #9ca3af; /* Slightly darker gray */
+  }
+  
+  .modal-login-button {
+    background-color: #2563eb; /* Blue */
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .modal-login-button:hover {
+    background-color: #1d4ed8; /* Darker blue */
+  }
+  
+  /* Responsive Styling for Screens <= 375px */
+@media (max-width: 375px) {
+    /* Overall Page Styling */
+    .register-page {
+      padding: 1.5rem; /* Reduce padding */
+    }
+  
+    /* Header Styling */
+    .register-header {
+      margin-bottom: 1.5rem; /* Reduce spacing */
+    }
+  
+    .register-title {
+      font-size: 1.4rem; /* Smaller font size */
+    }
+  
+    /* Form Styling */
+    .register-form {
+      padding: 1.5rem; /* Reduce padding inside form */
+      width: 100%; /* Full width */
+      box-shadow: none; /* Remove box shadow for a cleaner mobile look */
+    }
+  
+    .form-heading {
+      font-size: 1.1rem; /* Slightly smaller font */
+    }
+  
+    /* Input Group Styling */
+    .form-group {
+      flex-direction: column; /* Stack inputs vertically */
+      gap: 0.8rem; /* Reduce spacing */
+    }
+  
+    .form-input {
+      font-size: 0.9rem; /* Smaller font size for inputs */
+      padding: 0.6rem; /* Reduce padding */
+      width: 100%; /* Full width */
+    }
+  
+    .form-input::placeholder {
+      font-size: 0.85rem; /* Smaller placeholder text */
+    }
+  
+    /* Footer Styling */
+    .form-footer {
+      flex-direction: column; /* Stack elements vertically */
+      align-items: flex-start; /* Align to the left */
+      gap: 0.8rem; /* Add spacing between items */
+    }
+  
+    .remember-me {
+      font-size: 0.8rem; /* Smaller font */
+    }
+  
+    .forgot-password {
+      font-size: 0.8rem; /* Smaller font */
+    }
+  
+    /* Submit Button Styling */
+    .submit-button {
+      font-size: 0.9rem; /* Smaller font */
+      padding: 0.7rem; /* Adjust padding */
+      border-radius: 0.3rem; /* Smaller border radius */
+    }
+  
+    /* Texting (Already Have an Account) */
+    .texting {
+      font-size: 0.85rem; /* Smaller font */
+    }
+  
+    /* Modal Styling */
+    .modal {
+      width: 90%; /* Reduce modal width */
+      padding: 1.5rem; /* Adjust padding */
+      font-size: 0.9rem; /* Adjust font size */
+    }
+  
+    .modal-buttons {
+      flex-direction: column; /* Stack buttons vertically */
+      gap: 0.5rem; /* Reduce spacing between buttons */
+    }
+  
+    .modal-close-button, .modal-login-button {
+      font-size: 0.85rem; /* Smaller button font size */
+      padding: 0.6rem; /* Reduce button padding */
+    }
+  
+    .modal-close-button:hover, .modal-login-button:hover {
+      transform: scale(1.02); /* Add slight hover effect */
+    }
+  }
+  
+  /* Responsive Styling for Screens <= 375px */
+@media (max-width: 425px) {
+    /* Overall Page Styling */
+    .register-page {
+      padding: 1.5rem; /* Reduce padding */
+    }
+  
+    /* Header Styling */
+    .register-header {
+      margin-bottom: 1.5rem; /* Reduce spacing */
+    }
+  
+    .register-title {
+      font-size: 1.4rem; /* Smaller font size */
+    }
+  
+    /* Form Styling */
+    .register-form {
+      padding: 1.5rem; /* Reduce padding inside form */
+      width: 100%; /* Full width */
+      box-shadow: none; /* Remove box shadow for a cleaner mobile look */
+    }
+  
+    .form-heading {
+      font-size: 1.1rem; /* Slightly smaller font */
+    }
+  
+    /* Input Group Styling */
+    .form-group {
+      flex-direction: column; /* Stack inputs vertically */
+      gap: 0.8rem; /* Reduce spacing */
+    }
+  
+    .form-input {
+      font-size: 0.9rem; /* Smaller font size for inputs */
+      padding: 0.6rem; /* Reduce padding */
+      width: 100%; /* Full width */
+    }
+  
+    .form-input::placeholder {
+      font-size: 0.85rem; /* Smaller placeholder text */
+    }
+  
+    /* Footer Styling */
+    .form-footer {
+      flex-direction: column; /* Stack elements vertically */
+      align-items: flex-start; /* Align to the left */
+      gap: 0.8rem; /* Add spacing between items */
+    }
+  
+    .remember-me {
+      font-size: 0.8rem; /* Smaller font */
+    }
+  
+    .forgot-password {
+      font-size: 0.8rem; /* Smaller font */
+    }
+  
+    /* Submit Button Styling */
+    .submit-button {
+      font-size: 0.9rem; /* Smaller font */
+      padding: 0.7rem; /* Adjust padding */
+      border-radius: 0.3rem; /* Smaller border radius */
+    }
+  
+    /* Texting (Already Have an Account) */
+    .texting {
+      font-size: 0.85rem; /* Smaller font */
+    }
+  
+    /* Modal Styling */
+    .modal {
+      width: 90%; /* Reduce modal width */
+      padding: 1.5rem; /* Adjust padding */
+      font-size: 0.9rem; /* Adjust font size */
+    }
+  
+    .modal-buttons {
+      flex-direction: column; /* Stack buttons vertically */
+      gap: 0.5rem; /* Reduce spacing between buttons */
+    }
+  
+    .modal-close-button, .modal-login-button {
+      font-size: 0.85rem; /* Smaller button font size */
+      padding: 0.6rem; /* Reduce button padding */
+    }
+  
+    .modal-close-button:hover, .modal-login-button:hover {
+      transform: scale(1.02); /* Add slight hover effect */
+    }
+  }
+  
