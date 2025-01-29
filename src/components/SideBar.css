@@ -1,0 +1,309 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #101322;
+    color: white;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+  
+  /* Sidebar */
+  .sidebar {
+    position: fixed; /* Keeps the sidebar in a fixed position */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Full height of the viewport */
+    width: 200px; /* Sidebar width */
+    background-color: #1a202c; /* Adjust your preferred color */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000; /* Ensures the sidebar stays above other elements */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    color: yellow;
+    margin-bottom: 30px;
+  }
+  
+  /* Sidebar Navigation Links */
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .nav-links a,
+  .dropdown-btn {
+    display: flex;
+    align-items: center;
+    padding: 10px 40px;
+    color: white;
+    border: none;
+    text-decoration: none;
+    font-size: 15px;
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .nav-links a:hover,
+  .dropdown-btn:hover {
+    background-color: #292e4f; /* Subtle hover effect */
+    color: #007bff /* Highlight on hover */
+  }
+  
+  /* Dropdown Container */
+  .dropdown {
+    position: relative;
+  }
+  
+  /* Dropdown Button */
+  .dropdown-btn {
+    justify-content: space-between; /* Align text and dropdown icon */
+    gap: 10px;
+  }
+  
+  /* Dropdown Icon */
+  .dropdown-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .dropdown-icon.open {
+    transform: rotate(180deg); /* Rotate chevron when open */
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 100%; /* Below the dropdown button */
+    left: 0;
+    width: 100%; /* Matches button width */
+    background-color: #1b1f3b;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 10;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Dropdown Links */
+  .dropdown-link {
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .dropdown-link:hover {
+    background-color: #292e4f; /* Matches nav link hover */
+    color: yellow;
+  }
+
+  /* Responsive Styles for 375px Screens */
+@media screen and (max-width: 375px) {
+    
+    /* Sidebar Adjustments */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px; /* Initially hidden off-screen */
+        width: 250px; /* Sidebar width */
+        height: 100vh;
+        background-color: #1e1e2d;
+        transition: left 0.3s ease; /* Smooth sliding effect */
+        z-index: 1000;
+        padding: 20px;
+        overflow-y: auto; /* Enable scrolling for content */
+    }
+
+    .logo {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    /* Adjust Navigation Links */
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a, .dropdown-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    /* Reduce Sidebar Navigation Size */
+    .sidebar {
+        width: 180px;
+        padding: 15px;
+    }
+
+    /* Improve Dropdown Touch Usability */
+    .dropdown-menu {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    /* Hide Sidebar on Mobile */
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    /* Adjust Button Spacing */
+    .dropdown-btn {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+}
+ /* Responsive Styles for 375px Screens */
+ @media screen and (max-width: 425px) {
+    
+    /* Sidebar Adjustments */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px; /* Initially hidden off-screen */
+        width: 250px; /* Sidebar width */
+        height: 100vh;
+        background-color: #1e1e2d;
+        transition: left 0.3s ease; /* Smooth sliding effect */
+        z-index: 1000;
+        padding: 20px;
+        overflow-y: auto; /* Enable scrolling for content */
+    }
+
+    .logo {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    /* Adjust Navigation Links */
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a, .dropdown-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+        gap: 8px;
+        font-size: 13px;
+    }
+}
+
+.sidebar, .nav-links a, .dropdown-button, .stats-card, .graph-container {
+    transition: all 0.3s ease-in-out; /* Smooth transitions for hover and resize */
+  }
+  
+  /* Sidebar hover effect */
+  .sidebar:hover {
+    background-color: #2C3055; /* Slightly lighter background on hover */
+  }
+  
+  /* Navigation links hover effect */
+  .nav-links a:hover, .dropdown-button:hover {
+    transform: translateX(5px); /* Slide slightly to the right */
+    color: yellow;
+  }
+  
+  /* Stats card hover animation */
+  .stats-card:hover {
+    transform: scale(1.05); /* Subtle zoom effect on hover */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
+  }
+  
+  /* Graph container hover effect */
+  .graph-container:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    background-color: #24284A; /* Change background color */
+  }
+  
+  /* User avatar hover animation */
+  .user-avatar:hover {
+    transform: rotate(360deg); /* Rotate on hover */
+    transition: transform 0.6s ease-in-out; /* Smooth rotation animation */
+  }
+  
+  /* Smooth transition for topbar items */
+  .topbar {
+    transition: background-color 0.3s ease, padding 0.3s ease;
+  }
+  
+  .topbar:hover {
+    background-color: #24284A; /* Slight color change */
+  }
+  
+  /* Dropdown menu smooth expansion */
+  .dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    max-height: 500px; /* Expand smoothly */
+  }
+  

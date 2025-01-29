@@ -1,6 +1,11 @@
 /* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+@import "@fontsource/poppins"; /* Defaults to weight 400 */
+@import "@fontsource/poppins/300.css"; /* Light */
+@import "@fontsource/poppins/600.css"; /* Semi-bold */
+@import "@fontsource/poppins/700.css"; /* Bold */
+
 /* Reset Styles */
 * {
   margin: 0;

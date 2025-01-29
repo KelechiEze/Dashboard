@@ -1,25 +1,29 @@
 import { useState, useEffect } from "react";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
-import { FiSettings, FiUser, FiBell, FiChevronDown } from "react-icons/fi";
-import { RiWallet3Line } from "react-icons/ri";
-import { MdDashboard } from "react-icons/md";
-import logo from "../assets/logo2.png";
+import { FiBell } from "react-icons/fi";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import Sidebar from "./SideBar"; // Import Sidebar Component
 
 const Dashboard = () => {
-  const [walletDropdown, setWalletDropdown] = useState(false);
-  const [userDropdown, setUserDropdown] = useState(false);
   const [dashboardData, setDashboardData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch Dashboard Data from API
+  const data = [
+    { date: "Feb '12", value: 10 },
+    { date: "Mar '12", value: 20 },
+    { date: "Apr '12", value: 50 },
+    { date: "May '12", value: 10 },
+    { date: "Jun '12", value: 70 },
+    { date: "Jul '12", value: 90 },
+    { date: "Aug '12", value: 85 },
+  ];
+
+  // Fetch Dashboard Data
   const fetchDashboardData = async () => {
     try {
       const response = await fetch("http://localhost:5000/api/dashboard");
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
-      }
+      if (!response.ok) throw new Error("Failed to fetch data");
       const data = await response.json();
       setDashboardData(data);
       setLoading(false);
@@ -29,74 +33,15 @@ const Dashboard = () => {
     }
   };
 
-  // Fetch data every 5 seconds for real-time updates
   useEffect(() => {
-    fetchDashboardData(); // Fetch data when the component mounts
-    const interval = setInterval(fetchDashboardData, 5000); // Fetch every 5 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
+    fetchDashboardData();
+    const interval = setInterval(fetchDashboardData, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="dashboard-container">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <div className="logo-container">
-          <img src={logo} alt="cPocket Logo" className="logo" />
-        </div>
-
-        {/* Sidebar Links */}
-        <nav className="nav-links">
-          <Link to="" className="nav-item">
-            <MdDashboard size={20} />
-            <span>Dashboard</span>
-          </Link>
-
-          {/* Wallet Dropdown */}
-          <div className="dropdown">
-            <button onClick={() => setWalletDropdown(!walletDropdown)} className="dropdown-btn">
-              <span className="dropdown-title">
-                <RiWallet3Line size={20} />
-                <span>My Wallet</span>
-              </span>
-              <FiChevronDown />
-            </button>
-            {walletDropdown && (
-              <div className="dropdown-menu">
-                <Link to="/wallet/user-wallet">User Wallet</Link>
-                <Link to="/wallet/pending">Pending Transactions</Link>
-                <Link to="/wallet/all">All Transactions</Link>
-              </div>
-            )}
-          </div>
-
-          <Link to="/profile" className="nav-item">
-            <FiUser size={20} />
-            <span>Profile</span>
-          </Link>
-
-          {/* User Management Dropdown */}
-          <div className="dropdown">
-            <button onClick={() => setUserDropdown(!userDropdown)} className="dropdown-btn">
-              <span className="dropdown-title">
-                <FiUser size={20} />
-                <span>User Management</span>
-              </span>
-              <FiChevronDown />
-            </button>
-            {userDropdown && (
-              <div className="dropdown-menu">
-                <Link to="/users/manage">Manage Users</Link>
-              </div>
-            )}
-          </div>
-
-          <Link to="/settings" className="nav-item">
-            <FiSettings size={20} />
-            <span>Settings</span>
-          </Link>
-        </nav>
-      </div>
+      <Sidebar /> {/* Sidebar Component */}
 
       {/* Main Content */}
       <div className="main-content">
@@ -134,9 +79,23 @@ const Dashboard = () => {
             </div>
           )}
 
-          {/* Graph Placeholder */}
-          <div className="graph-placeholder">
-            <p>User Analytics Graph</p>
+          {/* Graph */}
+          <div className="graph-container">
+            <ResponsiveContainer width="100%" height={250}>
+              <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#665af0" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#665af0" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <XAxis dataKey="date" stroke="#a0a0a0" />
+                <YAxis stroke="#a0a0a0" />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.2)" />
+                <Tooltip />
+                <Area type="monotone" dataKey="value" stroke="#665af0" fillOpacity={1} fill="url(#colorUv)" />
+              </AreaChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </div>
