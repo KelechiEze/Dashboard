@@ -137,72 +137,75 @@
   .submit-button:hover {
     background-color: #4f46e5; /* Darker blue */
   }
-  
-  /* Modal overlay */
+/* Modal overlay */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  /* Modal content */
-  .modal {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .modal p {
-    margin: 0 0 16px;
-    font-size: 15px;
-    color: #333;
-  }
-  
-  .modal-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-    justify-content: center;
-  }
-  
-  .modal-close-button, .modal-login-button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.3rem;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .modal-close-button {
-    background-color: #d1d5db; /* Gray */
-    color: #1f2937; /* Dark gray */
-  }
-  
-  .modal-close-button:hover {
-    background-color: #9ca3af; /* Slightly darker gray */
-  }
-  
-  .modal-login-button {
-    background-color: #2563eb; /* Blue */
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-  }
-  
-  .modal-login-button:hover {
-    background-color: #1d4ed8; /* Darker blue */
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal content */
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal p {
+  margin: 0 0 16px;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Modal buttons container */
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+/* Button styles */
+.modal-close-button,
+.modal-login-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-close-button {
+  background-color: #d1d5db; /* Gray */
+  color: #1f2937; /* Dark gray */
+}
+
+.modal-close-button:hover {
+  background-color: #9ca3af; /* Slightly darker gray */
+}
+
+.modal-login-button {
+  background-color: #2563eb; /* Blue */
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.modal-login-button:hover {
+  background-color: #1d4ed8; /* Darker blue */
+}
+
   
   /* Responsive Styling for Screens <= 375px */
 @media (max-width: 375px) {

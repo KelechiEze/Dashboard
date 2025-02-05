@@ -1,22 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase"; // Import Firebase Authentication
 import "./LoginPage.css";
 
 const LoginPage = () => {
-  const navigate = useNavigate(); // Initialize the navigate function
+  const navigate = useNavigate();
+  const [formValues, setFormValues] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
 
-  const handleLogin = (event) => {
-    event.preventDefault(); // Prevent form from refreshing the page
+  // Handle Input Change
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
 
-    // Simulate authentication (replace with real authentication logic)
-    const email = event.target.email.value;
-    const password = event.target.password.value;
+  // Handle Firebase Login
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError(""); // Reset error message
 
-    if (email && password) {
-      // Redirect to Dashboard after login
-      navigate("/dashboard");
-    } else {
-      alert("Please enter valid credentials");
+    console.log("Attempting to log in with:", formValues.email); // Log email input
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, formValues.email, formValues.password);
+      const user = userCredential.user;
+
+      console.log("✅ User logged in successfully:", user);
+      console.log("🔑 User UID:", user.uid); // Log UID for debugging
+
+      localStorage.setItem("user", JSON.stringify(user)); // Store user data
+      navigate("/dashboard"); // Redirect to Dashboard
+    } catch (err) {
+      console.error("❌ Login Error:", err); // Log full error in the console
+
+      // Handle specific Firebase Auth errors
+      if (err.code === "auth/user-not-found") {
+        setError("No account found with this email. Please register.");
+      } else if (err.code === "auth/wrong-password") {
+        setError("Incorrect password. Please try again.");
+      } else if (err.code === "auth/too-many-requests") {
+        setError("Too many failed login attempts. Please try again later.");
+      } else {
+        setError("Login failed. Please check your details and try again.");
+      }
     }
   };
 
@@ -28,12 +55,16 @@ const LoginPage = () => {
       </div>
       <form className="login-form" onSubmit={handleLogin}>
         <h2 className="form-heading">Login Your Account</h2>
+        {error && <p className="error-message">{error}</p>} {/* Display error message */}
+
         <div className="form-group">
           <input
-            type="text"
+            type="email"
             name="email"
             placeholder="Email"
             className="form-input"
+            value={formValues.email}
+            onChange={handleInputChange}
             required
           />
         </div>
@@ -43,6 +74,8 @@ const LoginPage = () => {
             name="password"
             placeholder="Password"
             className="form-input"
+            value={formValues.password}
+            onChange={handleInputChange}
             required
           />
         </div>
@@ -55,12 +88,12 @@ const LoginPage = () => {
             Forgot Password?
           </NavLink>
         </div>
-        <button type="submit" className="submit-button">
+        <button type="submit" className="submit-button1">
           Login <span className="arrow">↗</span>
         </button>
         <p className="register-prompt">
           Not a Member?{" "}
-          <NavLink to="/register" className="register-link">
+          <NavLink to="/" className="register-link">
             Register
           </NavLink>
         </p>

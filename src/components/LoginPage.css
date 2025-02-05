@@ -103,11 +103,12 @@
   
   
   /* Submit Button */
-  .submit-button {
+  .submit-button1 {
     width: 100%;
     padding: 0.8rem;
     font-size: 1rem;
     font-weight: 600;
+    text-decoration: none;
     color: white;
     background-color: #6366f1; /* Blue */
     border: none;
@@ -116,7 +117,7 @@
     transition: background-color 0.3s;
   }
   
-  .submit-button:hover {
+  .submit-button1:hover {
     background-color: #4f46e5; /* Darker blue */
   }
   
@@ -193,7 +194,7 @@
     }
   
     /* Submit Button */
-    .submit-button {
+    .submit-button1 {
       font-size: 0.9rem; /* Reduce button font size */
       padding: 0.7rem; /* Adjust padding */
     }
@@ -261,7 +262,7 @@
     }
   
     /* Submit Button */
-    .submit-button {
+    .submit-butto1 {
       font-size: 0.9rem; /* Reduce button font size */
       padding: 0.7rem; /* Adjust padding */
     }

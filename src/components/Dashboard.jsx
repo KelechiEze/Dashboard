@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
+import { collection, doc, getDoc } from "firebase/firestore"; // Import Firestore functions
+import { db } from "../firebase"; // Import Firestore instance
 import "./Dashboard.css";
 import { FiBell } from "react-icons/fi";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import Sidebar from "./SideBar"; // Import Sidebar Component
 
 const Dashboard = () => {
-  const [dashboardData, setDashboardData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [dashboardData, setDashboardData] = useState({
+    todays_fee: "0.00000000",
+    total_fee: "0.00000000",
+    total_users: "0",
+  });
 
   const data = [
     { date: "Feb '12", value: 10 },
@@ -19,24 +23,24 @@ const Dashboard = () => {
     { date: "Aug '12", value: 85 },
   ];
 
-  // Fetch Dashboard Data
-  const fetchDashboardData = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/api/dashboard");
-      if (!response.ok) throw new Error("Failed to fetch data");
-      const data = await response.json();
-      setDashboardData(data);
-      setLoading(false);
-    } catch (err) {
-      setError(err.message);
-      setLoading(false);
-    }
-  };
-
+  // Fetch Dashboard Data from Firestore
   useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        const docRef = doc(db, "dashboard", "stats"); // Reference the 'stats' document
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setDashboardData(docSnap.data());
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching dashboard data:", error);
+      }
+    };
+
     fetchDashboardData();
-    const interval = setInterval(fetchDashboardData, 5000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -58,28 +62,22 @@ const Dashboard = () => {
 
         {/* Dashboard Content */}
         <div className="dashboard-content">
-          {loading ? (
-            <p>Loading data...</p>
-          ) : error ? (
-            <p style={{ color: "red" }}>Error: {error}</p>
-          ) : (
-            <div className="stats-grid">
-              <div className="stats-card blue">
-                <h4>Today's Fee</h4>
-                <p>{dashboardData.todays_fee || "0.00000000"}</p>
-              </div>
-              <div className="stats-card green">
-                <h4>Total Fee</h4>
-                <p>{dashboardData.total_fee || "0.00000000"}</p>
-              </div>
-              <div className="stats-card red">
-                <h4>Total Users</h4>
-                <p>{dashboardData.total_users || "0"}</p>
-              </div>
+          <div className="stats-grid">
+            <div className="stats-card blue">
+              <h4>Total Balance</h4>
+              <p>{dashboardData.todays_fee}</p>
             </div>
-          )}
+            <div className="stats-card green">
+              <h4>Wallet Balance</h4>
+              <p>{dashboardData.total_fee}</p>
+            </div>
+            <div className="stats-card red">
+              <h4>Investment Balance</h4>
+              <p>{dashboardData.total_users}</p>
+            </div>
+          </div>
 
-          {/* Graph */}
+          {/* Graph 
           <div className="graph-container">
             <ResponsiveContainer width="100%" height={250}>
               <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -96,7 +94,7 @@ const Dashboard = () => {
                 <Area type="monotone" dataKey="value" stroke="#665af0" fillOpacity={1} fill="url(#colorUv)" />
               </AreaChart>
             </ResponsiveContainer>
-          </div>
+          </div>*/}
         </div>
       </div>
     </div>
