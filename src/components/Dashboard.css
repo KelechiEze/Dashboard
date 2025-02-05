@@ -55,6 +55,7 @@ body, html {
   .dashboard-container {
     display: flex;
     height: 100vh;
+    
   }
   
   
@@ -178,9 +179,115 @@ body, html {
   }
   
   .stats-card p {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 300;
   }
+
+  /* Quick Trade Section */
+.quick-trade {
+  background: #2a1e52;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.quick-trade h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.quick-trade p {
+  font-size: 12px;
+  color: #b0aebf;
+}
+
+/* Crypto Balance Display */
+.crypto-balance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #372863;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.crypto-balance svg {
+  margin-right: 8px;
+}
+
+/* Trade Input Fields */
+.trade-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.input-group label {
+  font-size: 12px;
+  color: #b0aebf;
+  margin-bottom: 3px;
+}
+
+.input-group input {
+  background: #1f153d;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+}
+
+.input-group input:disabled {
+  background: #2e215b;
+}
+
+/* Buy & Sell Buttons */
+.trade-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.buy-btn, .sell-btn {
+  width: 48%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.buy-btn {
+  background: #3ecf68;
+  color: white;
+}
+
+.sell-btn {
+  background: #e74c3c;
+  color: white;
+}
+
+/* Footer Text */
+.trade-footer {
+  font-size: 10px;
+  color: #b0aebf;
+  margin-top: 10px;
+}
+
   
   /* Graph Placeholder */
   .graph-container {
@@ -197,7 +304,50 @@ body, html {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1.2s ease-in-out;
   }
-  
+  /* Crypto Cards Grid */
+.crypto-grid {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/* Individual Crypto Card */
+.crypto-card {
+  background: #2a1e52;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 180px;
+  color: white;
+}
+
+.crypto-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.crypto-card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.crypto-card p {
+  font-size: 14px;
+}
+
+/* Growth Styling */
+.growth.positive {
+  color: #00d26a;
+}
+
+.growth.negative {
+  color: #ff4c4c;
+}
+
+
   
 /* Responsive Styles for 375px Screens */
 @media screen and (max-width: 375px) {

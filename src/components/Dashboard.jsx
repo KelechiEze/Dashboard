@@ -3,8 +3,11 @@ import { collection, doc, getDoc } from "firebase/firestore"; // Import Firestor
 import { db } from "../firebase"; // Import Firestore instance
 import "./Dashboard.css";
 import { FiBell } from "react-icons/fi";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import Sidebar from "./SideBar"; // Import Sidebar Component
+
+// Import Crypto Icons
+import { FaBitcoin, FaEthereum } from "react-icons/fa";
+import { SiBinance, SiDogecoin } from "react-icons/si";
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState({
@@ -13,14 +16,12 @@ const Dashboard = () => {
     total_users: "0",
   });
 
-  const data = [
-    { date: "Feb '12", value: 10 },
-    { date: "Mar '12", value: 20 },
-    { date: "Apr '12", value: 50 },
-    { date: "May '12", value: 10 },
-    { date: "Jun '12", value: 70 },
-    { date: "Jul '12", value: 90 },
-    { date: "Aug '12", value: 85 },
+  // Crypto Balance Data (Dummy Values)
+  const cryptoBalances = [
+    { name: "Bitcoin", balance: "$168,331.09", icon: <FaBitcoin size={30} color="#F7931A" />, growth: "+45%" },
+    { name: "Ethereum", balance: "$12,098", icon: <FaEthereum size={30} color="#00D4D5" />, growth: "+45%" },
+    { name: "BNB", balance: "$67,224", icon: <SiBinance size={30} color="#F0B90B" />, growth: "-48%" },
+    { name: "Dogecoin", balance: "$8,783.33", icon: <SiDogecoin size={30} color="#C2A633" />, growth: "+45%" },
   ];
 
   // Fetch Dashboard Data from Firestore
@@ -62,39 +63,78 @@ const Dashboard = () => {
 
         {/* Dashboard Content */}
         <div className="dashboard-content">
+          {/* Balance Cards */}
           <div className="stats-grid">
             <div className="stats-card blue">
               <h4>Total Balance</h4>
-              <p>{dashboardData.todays_fee}</p>
+              <p>$256,436.00</p>
             </div>
             <div className="stats-card green">
               <h4>Wallet Balance</h4>
-              <p>{dashboardData.total_fee}</p>
+              <p>$256,436.00</p>
             </div>
             <div className="stats-card red">
               <h4>Investment Balance</h4>
-              <p>{dashboardData.total_users}</p>
+              <p>$4,356.67</p>
             </div>
           </div>
 
-          {/* Graph 
-          <div className="graph-container">
-            <ResponsiveContainer width="100%" height={250}>
-              <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#665af0" stopOpacity={0.8} />
-                    <stop offset="95%" stopColor="#665af0" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="date" stroke="#a0a0a0" />
-                <YAxis stroke="#a0a0a0" />
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.2)" />
-                <Tooltip />
-                <Area type="monotone" dataKey="value" stroke="#665af0" fillOpacity={1} fill="url(#colorUv)" />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>*/}
+          {/* Crypto Balance Cards */}
+          <div className="crypto-grid">
+            {cryptoBalances.map((crypto, index) => (
+              <div key={index} className="crypto-card">
+                <div className="crypto-icon">{crypto.icon}</div>
+                <h3>{crypto.balance}</h3>
+                <p className={`growth ${crypto.growth.startsWith("+") ? "positive" : "negative"}`}>
+                  {crypto.growth} This week
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="quick-trade">
+  <h3>Quick Trade</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur</p>
+
+  {/* Bitcoin Balance Display */}
+  <div className="crypto-balance">
+    <FaBitcoin size={20} color="#F7931A" />
+    <span>224,551 Btc</span>
+  </div>
+
+  {/* Trade Input Fields */}
+  <div className="trade-inputs">
+    <div className="input-group">
+      <label>Amount BTC</label>
+      <input type="number" placeholder="0.000000" />
+    </div>
+    <div className="input-group">
+      <label>Price BPL</label>
+      <input type="number" placeholder="0.000000" />
+    </div>
+    <div className="input-group">
+      <label>Fee (1%)</label>
+      <input type="number" placeholder="0.000000" disabled />
+    </div>
+    <div className="input-group">
+      <label>Total BPL</label>
+      <input type="number" placeholder="0.000000" disabled />
+    </div>
+  </div>
+
+  {/* Buy & Sell Buttons */}
+  <div className="trade-actions">
+    <button className="buy-btn">BUY</button>
+    <button className="sell-btn">SELL</button>
+  </div>
+
+  {/* Dummy Footer Text */}
+  <p className="trade-footer">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+  </p>
+</div>
+
+
         </div>
       </div>
     </div>
