@@ -17,7 +17,7 @@ const Sidebar = () => {
       </div>
 
       <nav className="nav-links">
-        <Link to="" className="nav-item">
+        <Link to="/dashboard" className="nav-item">
           <MdDashboard size={20} />
           <span>Dashboard</span>
         </Link>
@@ -33,14 +33,14 @@ const Sidebar = () => {
           </button>
           {walletDropdown && (
             <div className="dropdown-menu">
-              <Link to="/wallet/user-wallet">User Wallet</Link>
-              <Link to="/wallet/pending">Pending Transactions</Link>
-              <Link to="/wallet/all">All Transactions</Link>
+              <Link to="/dashboard/UserWallet">User Wallet</Link>
+              <Link to="/dashboard/wallet/pending">Pending Transactions</Link>
+              <Link to="/dashboard/wallet/all">All Transactions</Link>
             </div>
           )}
         </div>
 
-        <Link to="/profile" className="nav-item">
+        <Link to="/dashboard/profile" className="nav-item">
           <FiUser size={20} />
           <span>Profile</span>
         </Link>
@@ -56,14 +56,14 @@ const Sidebar = () => {
           </button>
           {userDropdown && (
             <div className="dropdown-menu">
-              <Link to="/users/manage" className="dropdown-link">
+              <Link to="/dashboard/users/manage" className="dropdown-link">
                 Manage Users
               </Link>
             </div>
           )}
         </div>
 
-        <Link to="/settings" className="nav-item">
+        <Link to="/dashboard/settings" className="nav-item">
           <FiSettings size={20} />
           <span>Settings</span>
         </Link>
