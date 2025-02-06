@@ -1,6 +1,7 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap');
 
+/* Font Source (Alternative for Local Use) */
 @import "@fontsource/poppins"; /* Defaults to weight 400 */
 @import "@fontsource/poppins/300.css"; /* Light */
 @import "@fontsource/poppins/600.css"; /* Semi-bold */
@@ -13,18 +14,45 @@
   box-sizing: border-box;
 }
 
+/* Set Base Font Styles */
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Poppins', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: #f8f9fa; /* Light background */
   color: #333; /* Default text color */
   line-height: 1.6;
   overflow-x: hidden;
+  font-weight: 400;
 }
 
+/* Headings & Typography */
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #222;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
+}
 
 /* Buttons */
 .primary-button {
@@ -36,12 +64,16 @@ body {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .primary-button:hover {
   background-color: #1d4ed8;
   transform: translateY(-3px);
+}
+
+.primary-button:active {
+  transform: scale(0.98);
 }
 
 /* Utility Classes */
@@ -65,7 +97,41 @@ body {
   padding-bottom: 4rem;
 }
 
+/* Section Styling */
 .section {
   max-width: 1200px; /* Limit section width for better layout */
   margin: 0 auto; /* Center-align sections */
+  padding: 2rem;
+}
+
+/* Card Styling */
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
 }

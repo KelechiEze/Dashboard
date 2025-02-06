@@ -1,7 +1,7 @@
 import React from "react";
 import WalletCard from "./WalletCard";
-import { FaBitcoin } from "react-icons/fa";
-import { SiLitecoin, SiRipple } from "react-icons/si";
+import { FaBitcoin, FaEthereum } from "react-icons/fa";
+import { SiBinance, SiDogecoin, SiLitecoin, SiTether } from "react-icons/si";
 
 const WalletList = () => {
   // Wallet Data
@@ -11,39 +11,72 @@ const WalletList = () => {
       shortSymbol: "BTC",
       icon: <FaBitcoin size={40} color="#F7931A" />,
       address: "OxsD12F32xvW3deG5...",
-      rate: "12.734",
+      rate: "97,048.42",
       sellingAmount: "54,634",
       buyingAmount: "534,263",
       balance: "1.5238237",
-      balanceUSD: "$15,238,237",
+      balanceUSD: "$147,466.86",
+    },
+    {
+      name: "Ethereum",
+      shortSymbol: "ETH",
+      icon: <FaEthereum size={40} color="#5A9" />,
+      address: "OxsD12F32xvW3deG5...",
+      rate: "2,709.23",
+      sellingAmount: "92,761",
+      buyingAmount: "600,451",
+      balance: "3.098273",
+      balanceUSD: "$8,388.28",
+    },
+    {
+      name: "BNB",
+      shortSymbol: "BNB",
+      icon: <SiBinance size={40} color="#F0B90B" />,
+      address: "OxsD12F32xvW3deG5...",
+      rate: "573.81",
+      sellingAmount: "102,347",
+      buyingAmount: "459,783",
+      balance: "5.238723",
+      balanceUSD: "$1,147.18",
+    },
+    {
+      name: "Dogecoin",
+      shortSymbol: "DOGE",
+      icon: <SiDogecoin size={40} color="#C2A633" />,
+      address: "OxsD12F32xvW3deG5...",
+      rate: "0.25",
+      sellingAmount: "10,500",
+      buyingAmount: "320,000",
+      balance: "78,234.23",
+      balanceUSD: "$19,361.02",
     },
     {
       name: "Litecoin",
       shortSymbol: "LTC",
       icon: <SiLitecoin size={40} color="#345D9D" />,
       address: "OxsD12F32xvW3deG5...",
-      rate: "273",
+      rate: "100.54",
       sellingAmount: "79,634",
       buyingAmount: "534,263",
       balance: "1.5238237",
       balanceUSD: "$20,275,237",
     },
     {
-      name: "Ripple",
-      shortSymbol: "XRP",
-      icon: <SiRipple size={40} color="#E48E00" />,
+      name: "Tether",
+      shortSymbol: "USDT",
+      icon: <SiTether size={40} color="#26A17B" />,
       address: "OxsD12F32xvW3deG5...",
-      rate: "2.730",
-      sellingAmount: "79,634",
-      buyingAmount: "162,364",
-      balance: "2,523.8237",
-      balanceUSD: "$275,237",
+      rate: "1.00",
+      sellingAmount: "500,000",
+      buyingAmount: "2,000,000",
+      balance: "250,000",
+      balanceUSD: "$250,048.75",
     },
   ];
 
   return (
-    <div className="wallet-list-container"> {/* Added a new wrapper */}
-      <h1 className="wallet-heading">My Wallet</h1> {/* Placed outside of the grid */}
+    <div className="wallet-list-container">
+      <h1 className="wallet-heading">My Wallet</h1>
       <div className="wallet-list">
         {wallets.map((wallet, index) => (
           <WalletCard key={index} crypto={wallet} />

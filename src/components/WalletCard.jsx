@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiLitecoin, SiRipple } from "react-icons/si";
 import { FiCopy } from "react-icons/fi";
+import DepositModal from "./DepositModal";
 import "./WalletCard.css";
 
 const WalletCard = ({ crypto }) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  // Function to copy wallet address
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(crypto.address);
+    alert("Wallet address copied!"); // Optional feedback
+  };
+
   return (
     <div className="wallet-card">
       {/* Wallet Header */}
       <div className="wallet-header">
-        <h3>{crypto.name} wallet</h3>
+        <h3>{crypto.name} Wallet</h3>
       </div>
 
       {/* Crypto Logo */}
@@ -22,7 +31,7 @@ const WalletCard = ({ crypto }) => {
       <div className="wallet-address">
         <span className="crypto-symbol">{crypto.shortSymbol}</span>
         <input type="text" value={crypto.address} readOnly />
-        <button className="copy-btn">
+        <button className="copy-btn" onClick={copyToClipboard}>
           <FiCopy size={18} />
         </button>
       </div>
@@ -35,7 +44,7 @@ const WalletCard = ({ crypto }) => {
         Total selling amount <span>{crypto.sellingAmount} $</span>
       </p>
       <p className="selling-buying">
-        Total buying buy <span>{crypto.buyingAmount} $</span>
+        Total buying amount <span>{crypto.buyingAmount} $</span>
       </p>
 
       {/* Balance */}
@@ -44,15 +53,18 @@ const WalletCard = ({ crypto }) => {
           Balance: <span>{crypto.balance} {crypto.shortSymbol}</span>
         </p>
         <p className="usd-balance">
-          Balance in USD: <span>{crypto.balanceUSD} USD</span>
+          Balance in USD: <span>{crypto.balanceUSD}</span>
         </p>
       </div>
 
       {/* Withdraw & Deposit Buttons */}
       <div className="wallet-actions">
         <button className="withdraw-btn">Withdraw</button>
-        <button className="deposit-btn">Deposit</button>
+        <button className="deposit-btn" onClick={() => setModalOpen(true)}>Deposit</button>
       </div>
+
+      {/* Deposit Modal */}
+      <DepositModal crypto={crypto} isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 };

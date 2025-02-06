@@ -5,11 +5,11 @@ import { FaBitcoin } from "react-icons/fa"; // Import Bitcoin Icon
 
 const TransactionHistory = () => {
   const transactions = [
-    { type: "Topup", time: "06:24:45 AM", amount: "+$5,553", status: "Completed", icon: <FaArrowUp />, color: "green" },
+    { type: "Deposit", time: "06:24:45 AM", amount: "+$5,553", status: "Completed", icon: <FaArrowUp />, color: "green" },
     { type: "Withdraw", time: "06:24:45 AM", amount: "-$542", status: "Completed", icon: <FaArrowDown />, color: "green" },
     { type: "Withdraw", time: "06:24:45 AM", amount: "-$912", status: "Completed", icon: <FaArrowDown />, color: "green" },
-    { type: "Topup", time: "06:24:45 AM", amount: "+$7,762", status: "Completed", icon: <FaArrowUp />, color: "green" },
-    { type: "Topup", time: "06:24:45 AM", amount: "+$5,553", status: "Completed", icon: <FaArrowUp />, color: "green" },
+    { type: "Deposit", time: "06:24:45 AM", amount: "+$7,762", status: "Completed", icon: <FaArrowUp />, color: "green" },
+    { type: "Deposit", time: "06:24:45 AM", amount: "+$5,553", status: "Completed", icon: <FaArrowUp />, color: "green" },
     { type: "Withdraw", time: "06:24:45 AM", amount: "-$912", status: "Completed", icon: <FaArrowDown />, color: "green" },
   ];
 
