@@ -15,7 +15,7 @@ const WalletList = () => {
       sellingAmount: "54,634",
       buyingAmount: "534,263",
       balance: "1.5238237",
-      balanceUSD: "15,238,237",
+      balanceUSD: "$15,238,237",
     },
     {
       name: "Litecoin",
@@ -26,7 +26,7 @@ const WalletList = () => {
       sellingAmount: "79,634",
       buyingAmount: "534,263",
       balance: "1.5238237",
-      balanceUSD: "20,275,237",
+      balanceUSD: "$20,275,237",
     },
     {
       name: "Ripple",
@@ -37,16 +37,18 @@ const WalletList = () => {
       sellingAmount: "79,634",
       buyingAmount: "162,364",
       balance: "2,523.8237",
-      balanceUSD: "275,237",
+      balanceUSD: "$275,237",
     },
   ];
 
   return (
-    <div className="wallet-list">
-       <div><h1>My Wallet</h1></div>
-      {wallets.map((wallet, index) => (
-        <WalletCard key={index} crypto={wallet} />
-      ))}
+    <div className="wallet-list-container"> {/* Added a new wrapper */}
+      <h1 className="wallet-heading">My Wallet</h1> {/* Placed outside of the grid */}
+      <div className="wallet-list">
+        {wallets.map((wallet, index) => (
+          <WalletCard key={index} crypto={wallet} />
+        ))}
+      </div>
     </div>
   );
 };

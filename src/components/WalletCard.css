@@ -9,6 +9,10 @@
   width: 300px;
   flex: 1 1 300px; /* Ensures they stay in a row but wrap when needed */
 }
+.wallet-list-container {
+  text-align: center; /* Centers the heading */
+  margin-bottom: 20px; /* Adds spacing below the heading */
+}
   .wallet-list {
     display: flex;
     justify-content: center; /* Centers the cards horizontally */
@@ -23,6 +27,13 @@
     font-weight: bold;
   }
   
+  .wallet-heading {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: left;
+  }
   /* Crypto Icon */
   .wallet-icon {
     margin-top: 10px;

@@ -7,7 +7,6 @@ import "./WalletCard.css";
 const WalletCard = ({ crypto }) => {
   return (
     <div className="wallet-card">
-        <h1>My Wallet</h1>
       {/* Wallet Header */}
       <div className="wallet-header">
         <h3>{crypto.name} wallet</h3>
