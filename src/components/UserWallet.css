@@ -1,0 +1,65 @@
+/* Container */
+.userwallet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-left: 100px;
+  }
+  
+  /* Crypto Cards Grid */
+  .userwallet-crypto-grid {
+    display: flex;
+    gap: 50px; /* Reduced gap slightly for better spacing */
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  
+  /* Individual Crypto Card */
+  .userwallet-crypto-card {
+    background: #2a1e52;
+    border-radius: 15px; /* Slightly rounded corners */
+    padding: 20px; /* Increased padding */
+    text-align: center;
+    width: 230px; /* Increased width */
+    height: 200px; /* Increased height */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Added slight shadow */
+  }
+  
+  /* Crypto Icon */
+  .userwallet-crypto-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 80px; /* Increased icon size */
+  }
+  
+  /* Crypto Balance */
+  .userwallet-crypto-card h3 {
+    font-size: 34px; /* Increased font size */
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Growth Text */
+  .userwallet-crypto-card p {
+    font-size: 16px; /* Increased font size */
+    font-weight: 600;
+  }
+  
+  /* Growth Styling */
+  .userwallet-growth.userwallet-positive {
+    color: #00d26a;
+  }
+  
+  .userwallet-growth.userwallet-negative {
+    color: #ff4c4c;
+  }
+  

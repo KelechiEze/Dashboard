@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: #f8f9fa; /* Light background */
   color: #333; /* Default text color */
   line-height: 1.6;

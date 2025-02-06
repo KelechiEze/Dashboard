@@ -8,6 +8,8 @@ body, html {
     animation: fadeIn 1s ease-in-out;
   }
 
+  
+
   @keyframes fadeIn {
     from {
         opacity: 0;
@@ -55,7 +57,6 @@ body, html {
   .dashboard-container {
     display: flex;
     height: 100vh;
-    
   }
   
   
@@ -133,6 +134,20 @@ body, html {
     border-radius: 50%;
   }
   
+  .welcome-message {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4CAF50; /* Green color */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: linear-gradient(to right, #4CAF50, #2196F3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
   /* Dashboard Content */
   .dashboard-content {
     padding: 30px;
@@ -148,144 +163,57 @@ body, html {
   }
   
   .stats-card {
-    flex: 0 1 30%; /* Each card takes approximately 50% of the row width */
+    flex: 0 1 30%; /* Each card takes approximately 30% of the row width */
     padding: 45px;
-    border-radius: 10px;
+    border-radius: 15px;
     color: white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    animation: zoomIn 0.6s ease-in-out;
-    transition: transform 0.3s ease; /* Smooth hover effect */
-  }
-  
-  .stats-card:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Beautiful Blue-Purple Gradient */
+    animation: fadeIn 0.6s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hue Glow Effect */
+.stats-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(30deg);
+    transition: opacity 0.5s ease-in-out;
+    z-index: 0;
+}
+
+/* Glow Effect on Hover */
+.stats-card:hover::before {
+    opacity: 0.5;
+}
+
+.stats-card:hover {
     transform: scale(1.05); /* Slight zoom on hover for better UX */
-  }
-  
-  .stats-card.blue {
-    background-color: #007bff;
-  }
-  
-  .stats-card.green {
-    background-color: #28a745;
-  }
-  
-  .stats-card.red {
-    background-color: #dc3545;
-  }
-  
-  .stats-card h4 {
+    box-shadow: 0px 6px 15px rgba(106, 17, 203, 0.4);
+}
+
+/* Text Styling */
+.stats-card h4 {
     font-size: 18px;
     font-weight: 600;
-  }
-  
-  .stats-card p {
-    font-size: 30px;
-    font-weight: 300;
-  }
-
-  /* Quick Trade Section */
-.quick-trade {
-  background: #2a1e52;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  color: white;
-  width: 100%;
-  max-width: 400px;
-  margin: 20px auto;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 1;
 }
 
-.quick-trade h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.quick-trade p {
-  font-size: 12px;
-  color: #b0aebf;
-}
-
-/* Crypto Balance Display */
-.crypto-balance {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #372863;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.crypto-balance svg {
-  margin-right: 8px;
-}
-
-/* Trade Input Fields */
-.trade-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.input-group label {
-  font-size: 12px;
-  color: #b0aebf;
-  margin-bottom: 3px;
-}
-
-.input-group input {
-  background: #1f153d;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  color: white;
-  font-size: 14px;
-}
-
-.input-group input:disabled {
-  background: #2e215b;
-}
-
-/* Buy & Sell Buttons */
-.trade-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
-.buy-btn, .sell-btn {
-  width: 48%;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.buy-btn {
-  background: #3ecf68;
-  color: white;
-}
-
-.sell-btn {
-  background: #e74c3c;
-  color: white;
-}
-
-/* Footer Text */
-.trade-footer {
-  font-size: 10px;
-  color: #b0aebf;
-  margin-top: 10px;
+.stats-card h1 {
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
+    position: relative;
+    z-index: 1;
 }
 
   
@@ -304,48 +232,7 @@ body, html {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1.2s ease-in-out;
   }
-  /* Crypto Cards Grid */
-.crypto-grid {
-  display: flex;
-  gap: 100px;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-/* Individual Crypto Card */
-.crypto-card {
-  background: #2a1e52;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  width: 180px;
-  color: white;
-}
-
-.crypto-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.crypto-card h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.crypto-card p {
-  font-size: 14px;
-}
-
-/* Growth Styling */
-.growth.positive {
-  color: #00d26a;
-}
-
-.growth.negative {
-  color: #ff4c4c;
-}
+ 
 
 
   
