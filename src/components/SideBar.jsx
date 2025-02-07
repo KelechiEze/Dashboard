@@ -41,11 +41,6 @@ const Sidebar = () => {
           <FiUser size={20} />
           <span>Profile</span>
         </Link>
-
-        <Link to="/dashboard/settings" className="nav-item">
-          <FiSettings size={20} />
-          <span>Settings</span>
-        </Link>
       </nav>
     </div>
   );

@@ -51,8 +51,8 @@ const WalletCard = ({ crypto }) => {
 
       {/* Withdraw & Deposit Buttons */}
       <div className="wallet-actions">
-        <button className="withdraw-btn">Send</button>
-        <button className="deposit-btn" onClick={() => setModalOpen(true)}>Receive</button>
+        <button className="withdraw-btn">Withdraw</button>
+        <button className="deposit-btn" onClick={() => setModalOpen(true)}>Deposit</button>
       </div>
 
       {/* Deposit Modal */}
