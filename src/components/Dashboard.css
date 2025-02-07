@@ -1,366 +1,284 @@
 /* General Styles */
 body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #101322;
-    color: white;
-    animation: fadeIn 1s ease-in-out;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #101322;
+  color: white;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
   }
-
-  
-
-  @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  to {
+      opacity: 1;
+  }
 }
 
 @keyframes slideInFromLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+  from {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
 }
 
 @keyframes slideInFromTop {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  from {
+      transform: translateY(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
 }
 
 @keyframes zoomIn {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+  from {
+      transform: scale(0.8);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
 }
 
-  
-  /* Layout */
-  .dashboard-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  
-  
-  /* Keyframes for Smooth Dropdown Animation */
-  @keyframes fadeIn {
-    from {
+/* Layout */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Keyframes for Smooth Dropdown Animation */
+@keyframes fadeIn {
+  from {
       opacity: 0;
       transform: translateY(-10px);
-    }
-    to {
+  }
+  to {
       opacity: 1;
       transform: translateY(0);
-    }
   }
-  
-  
-  /* Keyframes for Fade-in Effect */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Main Content */
-  .main-content {
-    flex: 1;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    margin-left: 250px; /* Push the content to the right to make space for the fixed sidebar */
-    padding: 20px; /* Add padding for better layout */
-  }
-  
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #101322;
-    padding: 15px 80px;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    animation: slideInFromTop 0.8s ease-out;
-  }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .iko {
-    width: 35px;
-    border-radius: 50%;
-  }
+}
 
-  .spol {
-    color: #fff;
-    margin-left: 10px;
-    font-size: 13px;
-  }
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin-left: 250px;
+  padding: 20px;
+}
 
-  .icon {
-    margin-left: -40px;
-    margin-top: 16px;
-  }
-  .user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-  
-  .welcome-message {
-    text-align: center;
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #4CAF50; /* Green color */
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    background: linear-gradient(to right, #4CAF50, #2196F3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  /* Dashboard Content */
-  .dashboard-content {
-    padding: 30px;
-  }
-  
-  .stats-grid {
-    display: flex; /* Flexbox layout */
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    gap: 20px; /* Spacing between the cards */
-    justify-content: space-between; /* Ensures even spacing */
-    padding: 10px 10px;
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #101322;
+  padding: 15px 80px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: slideInFromTop 0.8s ease-out;
+}
 
-  }
-  
-  .stats-card {
-    flex: 0 1 30%; /* Each card takes approximately 30% of the row width */
-    padding: 45px;
-    border-radius: 15px;
-    color: white;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Beautiful Blue-Purple Gradient */
-    animation: fadeIn 0.6s ease-in-out;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-    position: relative;
-    overflow: hidden;
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iko {
+  width: 35px;
+  border-radius: 50%;
+}
+
+.spol {
+  color: #fff;
+  margin-left: 10px;
+  font-size: 13px;
+}
+
+.icon {
+  margin-left: -40px;
+  margin-top: 16px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.welcome-message {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #4CAF50;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  background: linear-gradient(to right, #4CAF50, #2196F3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  padding: 30px;
+}
+
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.stats-card {
+  flex: 0 1 30%;
+  padding: 45px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  animation: fadeIn 0.6s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 /* Hue Glow Effect */
 .stats-card::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-    transform: rotate(30deg);
-    transition: opacity 0.5s ease-in-out;
-    z-index: 0;
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(30deg);
+  transition: opacity 0.5s ease-in-out;
+  z-index: 0;
+  pointer-events: none; /* Prevent blocking interactions */
 }
 
 /* Glow Effect on Hover */
 .stats-card:hover::before {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .stats-card:hover {
-    transform: scale(1.05); /* Slight zoom on hover for better UX */
-    box-shadow: 0px 6px 15px rgba(106, 17, 203, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(106, 17, 203, 0.4);
 }
 
 /* Text Styling */
 .stats-card h4 {
-    font-size: 18px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.8);
-    position: relative;
-    z-index: 1;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 1;
 }
 
 .stats-card h1 {
-    font-size: 40px;
-    font-weight: 600;
-    color: white;
-    position: relative;
-    z-index: 1;
+  font-size: 40px;
+  font-weight: 600;
+  color: white;
+  position: relative;
+  z-index: 1;
 }
 
-  
-  /* Graph Placeholder */
-  .graph-container {
-    background-color: #1B1F3B;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    color: gray;
-    display: flex;
-    margin-top: 90px;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 1.2s ease-in-out;
-  }
- 
-
-
-  
-/* Responsive Styles for 375px Screens */
-@media screen and (max-width: 375px) {
-
-    /* Adjust Main Content */
-    .main-content {
-        padding: 10px;
-    }
-
-    /* Topbar Adjustments */
-    .topbar {
-        display: flex;
-        flex-direction: row; /* Keep elements in a row */
-        align-items: center;
-        justify-content: space-between; /* Space out elements */
-        padding: 10px;
-        width: 100%;
-    }
-
-    .topbar-icons {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        gap: 170px; /* Add spacing between bell icon & user */
-    }
-
-    .user-profile {
-        gap: 5px;
-        font-size: 12px;
-    }
-
-    .iko {
-        width: 30px;
-    }
-
-    .icon {
-        margin-left: -20px;
-        margin-top: 10px;
-    }
-
-    /* Adjust Dashboard Content */
-    .dashboard-content {
-        padding: 15px;
-    }
-
-    /* Stack Stats Cards */
-    .stats-grid {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .stats-card {
-        flex: 1 1 100%; /* Full width on mobile */
-        padding: 20px;
-        font-size: 14px;
-    }
-
-    .stats-card h4 {
-        font-size: 13px;
-    }
-
-    .stats-card p {
-        font-size: 20px;
-    }
-
-    /* Adjust Graph Container */
-    .graph-container {
-        height: 150px;
-        padding: 15px;
-    }
+/* Balance Container */
+.balance-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0;
 }
 
+/* Fixed Eye Icon */
+.eye-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer !important; /* Ensure pointer is applied */
+  margin-left: 10px;
+  color: white;
+  font-size: 20px;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  position: relative;
+  z-index: 10; /* Ensure it is above other elements */
+}
 
-  
-  /* Transitions and Animations */
-  /* Add smooth transitions to elements */
-  .sidebar, .nav-links a, .dropdown-button, .stats-card, .graph-container {
-    transition: all 0.3s ease-in-out; /* Smooth transitions for hover and resize */
-  }
-  
-  /* Sidebar hover effect */
-  .sidebar:hover {
-    background-color: #2C3055; /* Slightly lighter background on hover */
-  }
-  
-  /* Navigation links hover effect */
-  .nav-links a:hover, .dropdown-button:hover {
-    transform: translateX(5px); /* Slide slightly to the right */
-    color: yellow;
-  }
-  
-  /* Stats card hover animation */
-  .stats-card:hover {
-    transform: scale(1.05); /* Subtle zoom effect on hover */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
-  }
-  
-  /* Graph container hover effect */
-  .graph-container:hover {
-    transform: scale(1.02); /* Slight zoom on hover */
-    background-color: #24284A; /* Change background color */
-  }
-  
-  /* User avatar hover animation */
-  .user-avatar:hover {
-    transform: rotate(360deg); /* Rotate on hover */
-    transition: transform 0.6s ease-in-out; /* Smooth rotation animation */
-  }
-  
-  /* Smooth transition for topbar items */
-  .topbar {
-    transition: background-color 0.3s ease, padding 0.3s ease;
-  }
-  
-  .topbar:hover {
-    background-color: #24284A; /* Slight color change */
-  }
-  
-  /* Dropdown menu smooth expansion */
-  .dropdown-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    max-height: 500px; /* Expand smoothly */
-  }
-  
+.eye-icon:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+button.eye-icon:focus {
+  outline: none;
+}
+
+/* Transitions and Animations */
+.sidebar, .nav-links a, .dropdown-button, .stats-card, .graph-container {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Sidebar hover effect */
+.sidebar:hover {
+  background-color: #2C3055;
+}
+
+/* Navigation links hover effect */
+.nav-links a:hover, .dropdown-button:hover {
+  transform: translateX(5px);
+  color: yellow;
+}
+
+/* Stats card hover animation */
+.stats-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Graph container hover effect */
+.graph-container:hover {
+  transform: scale(1.02);
+  background-color: #24284A;
+}
+
+/* User avatar hover animation */
+.user-avatar:hover {
+  transform: rotate(360deg);
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Smooth transition for topbar items */
+.topbar {
+  transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.topbar:hover {
+  background-color: #24284A;
+}
+
+/* Dropdown menu smooth expansion */
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  max-height: 500px;
+}

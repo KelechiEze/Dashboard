@@ -39,14 +39,6 @@ const WalletCard = ({ crypto }) => {
       {/* Conversion Rate */}
       <p className="conversion-rate">1 {crypto.shortSymbol} = {crypto.rate} USD</p>
 
-      {/* Selling & Buying Amount */}
-      <p className="selling-buying">
-        Total selling amount <span>{crypto.sellingAmount} $</span>
-      </p>
-      <p className="selling-buying">
-        Total buying amount <span>{crypto.buyingAmount} $</span>
-      </p>
-
       {/* Balance */}
       <div className="balance-section">
         <p className="crypto-balance">
@@ -59,8 +51,8 @@ const WalletCard = ({ crypto }) => {
 
       {/* Withdraw & Deposit Buttons */}
       <div className="wallet-actions">
-        <button className="withdraw-btn">Withdraw</button>
-        <button className="deposit-btn" onClick={() => setModalOpen(true)}>Deposit</button>
+        <button className="withdraw-btn">Send</button>
+        <button className="deposit-btn" onClick={() => setModalOpen(true)}>Receive</button>
       </div>
 
       {/* Deposit Modal */}

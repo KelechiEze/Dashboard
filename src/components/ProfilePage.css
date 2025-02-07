@@ -1,0 +1,135 @@
+.settings-container {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 60px;
+    font-family: Arial, sans-serif;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .profile-text h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .profile-text p {
+    margin: 2px 0;
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .profile-options {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .profile-card {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .profile-info h2 {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .username {
+    color: gray;
+    font-size: 14px;
+  }
+  
+  .join-date {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .contact-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+  }
+  
+  .icon {
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 5px;
+    background: #6200ea;
+    color: white;
+  }
+  
+  .edit-profile-btn {
+    margin-left: auto;
+    padding: 8px 15px;
+    border: none;
+    background: lightgray;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .coin-holding h3 {
+    margin-top: 20px;
+  }
+  
+  .coins {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .coin-card {
+    flex: 1 1 calc(50% - 10px);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .crypto-icon {
+    font-size: 30px;
+  }
+  
+  .btc {
+    background: #f4a261;
+    color: #fff;
+  }
+  
+  .eth {
+    background: #e0aaff;
+    color: #6a0572;
+  }
+  
+  .rpl {
+    background: #8ecae6;
+    color: #023047;
+  }
+  
+  .ltc {
+    background: #8d99ae;
+    color: #fff;
+  }
+  

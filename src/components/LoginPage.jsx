@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase"; // Import Firebase Authentication
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import Eye icons
 import "./LoginPage.css";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // Manage password visibility
 
   // Handle Input Change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+  };
+
+  // Toggle Password Visibility
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   // Handle Firebase Login
@@ -68,9 +75,9 @@ const LoginPage = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-group password-container">
           <input
-            type="password"
+            type={showPassword ? "text" : "password"} // Toggle input type
             name="password"
             placeholder="Password"
             className="form-input"
@@ -78,6 +85,9 @@ const LoginPage = () => {
             onChange={handleInputChange}
             required
           />
+          <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
         </div>
         <div className="form-footer">
           <label className="remember-me">

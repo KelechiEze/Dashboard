@@ -8,7 +8,6 @@ import logo from "../assets/logo2.png";
 
 const Sidebar = () => {
   const [walletDropdown, setWalletDropdown] = useState(false);
-  const [userDropdown, setUserDropdown] = useState(false);
 
   return (
     <div className="sidebar">
@@ -34,8 +33,6 @@ const Sidebar = () => {
           {walletDropdown && (
             <div className="dropdown-menu">
               <Link to="/dashboard/UserWallet">User Wallet</Link>
-              <Link to="/dashboard/wallet/pending">Pending Transactions</Link>
-              <Link to="/dashboard/wallet/all">All Transactions</Link>
             </div>
           )}
         </div>
@@ -44,24 +41,6 @@ const Sidebar = () => {
           <FiUser size={20} />
           <span>Profile</span>
         </Link>
-
-        {/* User Management Dropdown */}
-        <div className="dropdown">
-          <button onClick={() => setUserDropdown(!userDropdown)} className="dropdown-btn">
-            <span className="dropdown-title">
-              <FiUser size={20} />
-              <span>User Management</span>
-            </span>
-            <FiChevronDown className={`dropdown-icon ${userDropdown ? "open" : ""}`} />
-          </button>
-          {userDropdown && (
-            <div className="dropdown-menu">
-              <Link to="/dashboard/users/manage" className="dropdown-link">
-                Manage Users
-              </Link>
-            </div>
-          )}
-        </div>
 
         <Link to="/dashboard/settings" className="nav-item">
           <FiSettings size={20} />

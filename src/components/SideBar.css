@@ -80,6 +80,7 @@ body, html {
     gap: 15px;
     padding: 0;
     list-style: none;
+    margin-top: 30px;
   }
   
   .nav-links a,
@@ -88,6 +89,7 @@ body, html {
     align-items: center;
     padding: 10px 40px;
     color: white;
+    margin-bottom: 30px;
     border: none;
     text-decoration: none;
     font-size: 15px;

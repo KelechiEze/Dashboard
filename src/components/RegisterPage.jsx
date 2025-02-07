@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase"; // Import Firebase auth & Firestore
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
 import "./RegisterPage.css";
 
 const countries = [
@@ -33,6 +34,11 @@ const RegisterPage = () => {
     rememberMe: false,
   });
 
+  const [isPasswordVisible, setIsPasswordVisible] = useState({
+    password: false,
+    confirmPassword: false,
+  });
+
   // Handle Input Change
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -40,6 +46,14 @@ const RegisterPage = () => {
       ...formValues,
       [name]: type === "checkbox" ? checked : value,
     });
+  };
+
+  // Toggle Password Visibility
+  const togglePasswordVisibility = (field) => {
+    setIsPasswordVisible((prevState) => ({
+      ...prevState,
+      [field]: !prevState[field],
+    }));
   };
 
   // Handle Register Submission (Firebase Integration)
@@ -165,26 +179,40 @@ const RegisterPage = () => {
             required
           />
         </div>
+        
+        {/* Password and Confirm Password with Visibility Toggle */}
         <div className="form-group">
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="form-input"
-            value={formValues.password}
-            onChange={handleInputChange}
-            required
-          />
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            className="form-input"
-            value={formValues.confirmPassword}
-            onChange={handleInputChange}
-            required
-          />
+          <div className="password-wrapper">
+            <input
+              type={isPasswordVisible.password ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              className="form-input"
+              value={formValues.password}
+              onChange={handleInputChange}
+              required
+            />
+            <span className="eye-icon2" onClick={() => togglePasswordVisibility("password")}>
+              {isPasswordVisible.password ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </span>
+          </div>
+
+          <div className="password-wrapper">
+            <input
+              type={isPasswordVisible.confirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              className="form-input"
+              value={formValues.confirmPassword}
+              onChange={handleInputChange}
+              required
+            />
+            <span className="eye-icon2" onClick={() => togglePasswordVisibility("confirmPassword")}>
+              {isPasswordVisible.confirmPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </span>
+          </div>
         </div>
+
         <div className="form-footer">
           <label className="remember-me">
             <input

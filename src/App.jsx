@@ -6,7 +6,7 @@ import DashboardLayout from "./components/DashboardLayout";
 import Dashboard from "./components/Dashboard";
 import ProfilePage from "./components/ProfilePage";
 import SettingsPage from "./components/SettingsPage";
-import UserWallet from "./components/UserWallet";
+import UserWallet from "./components/userWallet";
 import PendingTransactions from "./components/PendingTransactions";
 import AllTransactions from "./components/AllTransactions";
 import ManageUsers from "./components/ManageUsers";

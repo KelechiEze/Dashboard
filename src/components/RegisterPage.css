@@ -61,6 +61,19 @@
     gap: 1rem;
     margin-bottom: 1rem;
   }
+  .password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .eye-icon2 {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #555;
+  }
+  
   
   .form-input {
     flex: 1;

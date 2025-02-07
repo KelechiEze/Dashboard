@@ -1,58 +1,64 @@
 import { useState, useEffect } from "react";
-import { collection, doc, getDoc } from "firebase/firestore"; // Import Firestore functions
-import { db } from "../firebase"; // Import Firestore instance
 import "./Dashboard.css";
 import { FiBell } from "react-icons/fi";
+import { FaEye, FaEyeSlash, FaBitcoin, FaEthereum } from "react-icons/fa";
+import { SiRipple, SiLitecoin } from "react-icons/si";
 import TransactionHistory from "./TransactionHistory";
-import Sidebar from "./SideBar"; // Import Sidebar Component
-
-// Import Crypto Icons
-import { FaBitcoin, FaEthereum } from "react-icons/fa";
-import { SiBinance, SiDogecoin } from "react-icons/si";
+import Sidebar from "./SideBar";
 
 const Dashboard = () => {
-  const [dashboardData, setDashboardData] = useState({
-    todays_fee: "0.00000000",
-    total_fee: "0.00000000",
-    total_users: "0",
+  const balances = {
+    totalBalance: 446685.0,
+    walletBalance: 252080.0,
+    investmentBalance: 4356.67,
+  };
+
+  const [displayedBalance, setDisplayedBalance] = useState({
+    totalBalance: 0,
+    walletBalance: 0,
+    investmentBalance: 0,
   });
 
-  // Crypto Balance Data (Dummy Values)
-  const cryptoBalances = [
-    { name: "Bitcoin", balance: "$168,331.09", icon: <FaBitcoin size={30} color="#F7931A" />, growth: "+45%" },
-    { name: "Ethereum", balance: "$12,098", icon: <FaEthereum size={30} color="#00D4D5" />, growth: "+45%" },
-    { name: "BNB", balance: "$67,224", icon: <SiBinance size={30} color="#F0B90B" />, growth: "-48%" },
-    { name: "Dogecoin", balance: "$8,783.33", icon: <SiDogecoin size={30} color="#C2A633" />, growth: "+45%" },
-  ];
+  const [isBalanceVisible, setIsBalanceVisible] = useState({
+    totalBalance: false,
+    walletBalance: false,
+    investmentBalance: false,
+  });
 
-  // Fetch Dashboard Data from Firestore
-  useEffect(() => {
-    const fetchDashboardData = async () => {
-      try {
-        const docRef = doc(db, "dashboard", "stats"); // Reference the 'stats' document
-        const docSnap = await getDoc(docRef);
+  const toggleBalanceVisibility = (key) => {
+    if (!isBalanceVisible[key]) {
+      let count = 0;
+      const target = balances[key];
+      const increment = target / 100; // Adjust this for slower/faster speed
 
-        if (docSnap.exists()) {
-          setDashboardData(docSnap.data());
-        } else {
-          console.log("No such document!");
+      const interval = setInterval(() => {
+        count += increment;
+        if (count >= target) {
+          count = target;
+          clearInterval(interval);
         }
-      } catch (error) {
-        console.error("Error fetching dashboard data:", error);
-      }
-    };
+        setDisplayedBalance((prev) => ({ ...prev, [key]: count }));
+      }, 50); // Adjust this for slower/faster speed (higher value = slower)
 
-    fetchDashboardData();
-  }, []);
+      setIsBalanceVisible((prevState) => ({
+        ...prevState,
+        [key]: true,
+      }));
+    } else {
+      setIsBalanceVisible((prevState) => ({
+        ...prevState,
+        [key]: false,
+      }));
+      setDisplayedBalance((prev) => ({ ...prev, [key]: 0 }));
+    }
+  };
 
   return (
     <div className="dashboard-container">
-      <Sidebar /> {/* Sidebar Component */}
+      <Sidebar />
 
-      {/* Main Content */}
       <div className="main-content">
         <div className="topbar">
-          <h2>Dashboard</h2>
           <div className="topbar-icons">
             <FiBell size={20} className="icon" />
             <div className="user-profile">
@@ -62,28 +68,82 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Welcome Message */}
         <h1 className="welcome-message">Welcome to PayCoin Dashboard</h1>
 
-        {/* Dashboard Content */}
         <div className="dashboard-content">
-          {/* Balance Cards */}
           <div className="stats-grid">
+            {/* Total Balance */}
             <div className="stats-card blue">
               <h4>Total Balance</h4>
-              <h1>$256,436.00</h1>
+              <div className="balance-container">
+                <h1>
+                  {isBalanceVisible.totalBalance
+                    ? `$${displayedBalance.totalBalance.toFixed(2)}`
+                    : "****"}
+                </h1>
+                <button className="eye-icon" onClick={() => toggleBalanceVisibility("totalBalance")}>
+                  {isBalanceVisible.totalBalance ? <FaEyeSlash size={24} /> : <FaEye size={24} />}
+                </button>
+              </div>
             </div>
+
+            {/* Wallet Balance */}
             <div className="stats-card green">
               <h4>Wallet Balance</h4>
-              <h1>$252,080.00</h1>
+              <div className="balance-container">
+                <h1>
+                  {isBalanceVisible.walletBalance
+                    ? `$${displayedBalance.walletBalance.toFixed(2)}`
+                    : "****"}
+                </h1>
+                <button className="eye-icon" onClick={() => toggleBalanceVisibility("walletBalance")}>
+                  {isBalanceVisible.walletBalance ? <FaEyeSlash size={24} /> : <FaEye size={24} />}
+                </button>
+              </div>
             </div>
+
+            {/* Investment Balance */}
             <div className="stats-card red">
               <h4>Investment Balance</h4>
-              <h1>$4,356.67</h1>
+              <div className="balance-container">
+                <h1>
+                  {isBalanceVisible.investmentBalance
+                    ? `$${displayedBalance.investmentBalance.toFixed(2)}`
+                    : "****"}
+                </h1>
+                <button className="eye-icon" onClick={() => toggleBalanceVisibility("investmentBalance")}>
+                  {isBalanceVisible.investmentBalance ? <FaEyeSlash size={24} /> : <FaEye size={24} />}
+                </button>
+              </div>
             </div>
           </div>
 
-         <TransactionHistory />
+          <div className="coin-holding">
+            <div className="coins">
+              <div className="coin-card btc">
+                <FaBitcoin className="crypto-icon" />
+                <h2>$65,123</h2>
+                <p>BTC</p>
+              </div>
+              <div className="coin-card eth">
+                <FaEthereum className="crypto-icon" />
+                <h2>$2,551</h2>
+                <p>ETH</p>
+              </div>
+              <div className="coin-card rpl">
+                <SiRipple className="crypto-icon" />
+                <h2>$0.55</h2>
+                <p>USDT</p>
+              </div>
+              <div className="coin-card ltc">
+                <SiLitecoin className="crypto-icon" />
+                <h2>$65,123</h2>
+                <p>LTC</p>
+              </div>
+            </div>
+          </div>
+
+          <TransactionHistory />
         </div>
       </div>
     </div>

@@ -26,11 +26,6 @@ const DepositModal = ({ crypto, isOpen, onClose }) => {
           Sending any other coins may result in loss.
         </p>
 
-        {/* QR Code (Placeholder for now) */}
-        <div className="qr-code">
-          <img src="/qr-placeholder.png" alt="QR Code" />
-        </div>
-
         {/* Wallet Address */}
         <div className="wallet-address-box">
           <input type="text" value={crypto.address} readOnly />
