@@ -79,15 +79,21 @@ const RegisterPage = () => {
 
       // Step 2: Store Additional User Info in Firestore
       await setDoc(doc(collection(db, "users"), user.uid), {
-        firstName: formValues.firstName,
-        lastName: formValues.lastName,
+        firstName: formValues.firstName,  // ✅ FIXED
+        lastName: formValues.lastName,    // ✅ FIXED
         email: formValues.email,
         gender: formValues.gender,
         country: formValues.country,
         phone: formValues.phone,
         password: formValues.password,
         userId: user.uid,
+        profileImage: "https://randomuser.me/api/portraits/men/75.jpg",
+        username: `${formValues.firstName} ${formValues.lastName}`,  // ✅ FIXED
+        totalBalance: 0,
+        walletBalance: 0,
+        investmentBalance: 0,
       });
+
       console.log("User information stored in Firestore");
 
       // Registration successful: Alert and redirect to login page
