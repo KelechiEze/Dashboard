@@ -133,21 +133,20 @@ body, html {
 .dashboard-content {
   padding: 30px;
 }
-
 .stats-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px; /* Reduced gap for tighter spacing */
   justify-content: space-between;
   padding: 10px 10px;
 }
 
 .stats-card {
-  flex: 0 1 30%;
-  padding: 45px;
-  border-radius: 15px;
+  flex: 0 1 25%; /* Reduce card width */
+  padding: 20px; /* Reduce padding for a smaller size */
+  border-radius: 12px;
   color: white;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   animation: fadeIn 0.6s ease-in-out;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -176,12 +175,12 @@ body, html {
 
 .stats-card:hover {
   transform: scale(1.05);
-  box-shadow: 0px 6px 15px rgba(106, 17, 203, 0.4);
+  box-shadow: 0px 6px 12px rgba(106, 17, 203, 0.4);
 }
 
 /* Text Styling */
 .stats-card h4 {
-  font-size: 18px;
+  font-size: 16px; /* Reduced font size */
   font-weight: 600;
   color: rgba(255, 255, 255, 0.8);
   position: relative;
@@ -189,7 +188,7 @@ body, html {
 }
 
 .stats-card h1 {
-  font-size: 40px;
+  font-size: 32px; /* Reduced font size */
   font-weight: 600;
   color: white;
   position: relative;
