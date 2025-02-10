@@ -1,0 +1,242 @@
+/* Withdraw Button */
+.withdraw-button {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #26A17B;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+  
+.withdraw-button:hover {
+    background: #1f8a68;
+    transform: scale(1.05);
+}
+  
+.withdraw-button:active {
+    transform: scale(0.98);
+}
+
+/* Modal Background */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+/* Modal Container */
+.withdraw-modal {
+    background: #1c1c1c;
+    color: white;
+    padding: 20px;
+    width: 420px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.close-btn,
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.close-btn:hover,
+.back-btn:hover {
+    color: #26A17B;
+}
+
+/* Search Bar */
+.search-bar {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #262626;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: #888;
+}
+
+/* Token List */
+.token-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.token-item67 {
+    display: flex;
+    align-items: center;
+    background: #262626;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.token-item67:hover {
+    background: #333;
+    transform: scale(1.02);
+}
+
+.token-info7 {
+    margin-left: 12px;
+}
+
+.token-name3 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.token-balance9 {
+    font-size: 13px;
+    color: #bbb;
+}
+
+.usd-balance {
+    font-size: 13px;
+    color: #777;
+}
+
+/* Scrollbar Styling */
+.token-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.token-list::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 5px;
+}
+
+.token-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Send Crypto Screen */
+.send-crypto-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.crypto-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.network-text {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+/* Input Field */
+.input-field {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.input-field label {
+    font-size: 14px;
+    color: #aaa;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #222;
+    color: white;
+}
+
+/* USD Amount Input */
+.usd-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #222;
+    color: white;
+    font-size: 14px;
+    text-align: right;
+}
+
+.usd-input::placeholder {
+    color: #777;
+}
+
+/* Amount Input for Crypto */
+.amount-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.max-btn {
+    background: #26A17B;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.balance-text {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+/* Withdraw Button */
+.preview-btn {
+    width: 100%;
+    padding: 10px;
+    background: #26A17B;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

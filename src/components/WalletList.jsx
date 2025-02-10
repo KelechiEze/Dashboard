@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import WalletCard from "./WalletCard";
+import WithdrawModal from "./WithdrawModal"; // Import WithdrawModal
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiBinance, SiDogecoin, SiLitecoin, SiTether } from "react-icons/si";
 
 const WalletList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Wallet Data
   const wallets = [
     {
@@ -59,7 +62,7 @@ const WalletList = () => {
       sellingAmount: "79,634",
       buyingAmount: "534,263",
       balance: "1.5238237",
-      balanceUSD: "$20,275,237",
+      balanceUSD: "$20,275.23",
     },
     {
       name: "Tether",
@@ -82,6 +85,14 @@ const WalletList = () => {
           <WalletCard key={index} crypto={wallet} />
         ))}
       </div>
+
+      {/* Withdraw Button */}
+      <button className="withdraw-button" onClick={() => setIsModalOpen(true)}>
+        Withdraw
+      </button>
+
+      {/* Withdraw Modal - Pass the wallets data */}
+      <WithdrawModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} wallets={wallets} />
     </div>
   );
 };

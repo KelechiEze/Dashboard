@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiLitecoin, SiRipple } from "react-icons/si";
 import { FiCopy } from "react-icons/fi";
-import DepositModal from "./DepositModal";
+import WithdrawModal from "./WithdrawModal"; // Import WithdrawModal
+import DepositModal from "./DepositModal"; // Import DepositModal
 import "./WalletCard.css";
 
 const WalletCard = ({ crypto }) => {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isDepositModalOpen, setDepositModalOpen] = useState(false);
+  const [isWithdrawModalOpen, setWithdrawModalOpen] = useState(false);
 
   // Function to copy wallet address
   const copyToClipboard = () => {
@@ -51,12 +53,14 @@ const WalletCard = ({ crypto }) => {
 
       {/* Withdraw & Deposit Buttons */}
       <div className="wallet-actions">
-        <button className="withdraw-btn">Withdraw</button>
-        <button className="deposit-btn" onClick={() => setModalOpen(true)}>Deposit</button>
+        <button className="deposit-btn" onClick={() => setDepositModalOpen(true)}>
+          Deposit
+        </button>
       </div>
 
-      {/* Deposit Modal */}
-      <DepositModal crypto={crypto} isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+      {/* Modals */}
+      <DepositModal crypto={crypto} isOpen={isDepositModalOpen} onClose={() => setDepositModalOpen(false)} />
+      <WithdrawModal isOpen={isWithdrawModalOpen} onClose={() => setWithdrawModalOpen(false)} />
     </div>
   );
 };
