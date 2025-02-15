@@ -94,6 +94,7 @@ const LoginPage = () => {
             <input type="checkbox" />
             Remember me
           </label>
+          {/* Corrected Forgot Password Link */}
           <NavLink to="/forgot-password" className="forgot-password">
             Forgot Password?
           </NavLink>

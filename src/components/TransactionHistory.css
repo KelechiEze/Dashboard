@@ -5,10 +5,15 @@
     border-radius: 15px;
     width: 100%;
     margin-top: 80px;
-    max-width: 100%;
+    max-width: 600px; /* Default for Dashboard */
     color: white;
     font-family: Arial, sans-serif;
     box-sizing: border-box;
+}
+
+/* Full-width version for UserWallet */
+.transaction-container.full-width {
+    max-width: 100%;
 }
 
 /* Transaction Header */
@@ -138,4 +143,28 @@
     display: block;
     color: white;
     cursor: pointer;
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+    .transaction-container {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .transaction-item {
+        grid-template-columns: 30px 1fr 1fr; /* Adjust for smaller screens */
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .transaction-item .icon {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .txn-amount, .txn-type, .txn-time, .txn-status {
+        font-size: 14px;
+    }
 }

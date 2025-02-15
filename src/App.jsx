@@ -10,6 +10,7 @@ import UserWallet from "./components/UserWallet";
 import PendingTransactions from "./components/PendingTransactions";
 import AllTransactions from "./components/AllTransactions";
 import ManageUsers from "./components/ManageUsers";
+import ForgotPassword from "./components/ForgotPassword"; // Ensure the file path is correct
 
 function App() {
   return (
@@ -18,13 +19,14 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* Dashboard Layout with Nested Routes */}
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="settings" element={<SettingsPage />} />
-          <Route path="UserWallet" element={<UserWallet />} />
+          <Route path="Userwallet" element={<UserWallet />} />
           <Route path="wallet/pending" element={<PendingTransactions />} />
           <Route path="wallet/all" element={<AllTransactions />} />
           <Route path="users/manage" element={<ManageUsers />} />

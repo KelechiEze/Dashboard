@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WalletCard from "./WalletCard";
-import WithdrawModal from "./WithdrawModal"; // Import WithdrawModal
+import WithdrawModal from "./WithdrawModal";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiBinance, SiDogecoin, SiLitecoin, SiTether } from "react-icons/si";
+import { auth, db } from "../firebase";
+import { doc, onSnapshot } from "firebase/firestore";
 
 const WalletList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Wallet Data
-  const wallets = [
+  const [wallets, setWallets] = useState([
     {
       name: "Bitcoin",
       shortSymbol: "BTC",
@@ -17,8 +17,8 @@ const WalletList = () => {
       rate: "97,048.42",
       sellingAmount: "54,634",
       buyingAmount: "534,263",
-      balance: "1.5238237",
-      balanceUSD: "$147,466.86",
+      balance: 0,
+      balanceUSD: 0,
     },
     {
       name: "Ethereum",
@@ -28,8 +28,8 @@ const WalletList = () => {
       rate: "2,709.23",
       sellingAmount: "92,761",
       buyingAmount: "600,451",
-      balance: "3.098273",
-      balanceUSD: "$8,388.28",
+      balance: 0,
+      balanceUSD: 0,
     },
     {
       name: "BNB",
@@ -39,8 +39,8 @@ const WalletList = () => {
       rate: "573.81",
       sellingAmount: "102,347",
       buyingAmount: "459,783",
-      balance: "5.238723",
-      balanceUSD: "$1,147.18",
+      balance: 0,
+      balanceUSD: 0,
     },
     {
       name: "Dogecoin",
@@ -50,8 +50,8 @@ const WalletList = () => {
       rate: "0.25",
       sellingAmount: "10,500",
       buyingAmount: "320,000",
-      balance: "78,234.23",
-      balanceUSD: "$19,361.02",
+      balance: 0,
+      balanceUSD: 0,
     },
     {
       name: "Litecoin",
@@ -61,8 +61,8 @@ const WalletList = () => {
       rate: "100.54",
       sellingAmount: "79,634",
       buyingAmount: "534,263",
-      balance: "1.5238237",
-      balanceUSD: "$20,275.23",
+      balance: 0,
+      balanceUSD: 0,
     },
     {
       name: "Tether",
@@ -72,10 +72,35 @@ const WalletList = () => {
       rate: "1.00",
       sellingAmount: "500,000",
       buyingAmount: "2,000,000",
-      balance: "250,000",
-      balanceUSD: "$250,048.75",
+      balance: 0,
+      balanceUSD: 0,
     },
-  ];
+  ]);
+
+  // Fetch wallet data from Firestore in real-time
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const walletRef = doc(db, "wallets", user.uid);
+
+    const unsubscribe = onSnapshot(walletRef, (walletSnap) => {
+      if (walletSnap.exists()) {
+        const walletData = walletSnap.data();
+        console.log("Fetched Wallet Data from Firestore:", walletData); // Debugging
+
+        setWallets((prevWallets) =>
+          prevWallets.map((wallet) => ({
+            ...wallet,
+            balance: walletData[wallet.shortSymbol]?.balance ?? wallet.balance, // Preserve balance
+            balanceUSD: walletData[wallet.shortSymbol]?.balanceUSD ?? wallet.balanceUSD, // Preserve balanceUSD
+          }))
+        );
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup listener on unmount
+  }, []);
 
   return (
     <div className="wallet-list-container">
@@ -86,13 +111,16 @@ const WalletList = () => {
         ))}
       </div>
 
-      {/* Withdraw Button */}
       <button className="withdraw-button" onClick={() => setIsModalOpen(true)}>
         Withdraw
       </button>
 
-      {/* Withdraw Modal - Pass the wallets data */}
-      <WithdrawModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} wallets={wallets} />
+      <WithdrawModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        wallets={wallets}
+        setWallets={setWallets}
+      />
     </div>
   );
 };

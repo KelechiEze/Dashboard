@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./TransactionHistory.css";
 import { FaArrowDown, FaArrowUp, FaBitcoin } from "react-icons/fa";
-import { auth, db } from "../firebase"; // Firebase Import
+import { auth, db } from "../firebase";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 
-const TransactionHistory = () => {
+const TransactionHistory = ({ fullWidth }) => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const user = auth.currentUser; // Get logged-in user
+  const user = auth.currentUser;
 
   useEffect(() => {
     if (!user) {
@@ -15,11 +15,9 @@ const TransactionHistory = () => {
       return;
     }
 
-    // Reference Firestore transactions collection
     const transactionsRef = collection(db, "transactions");
     const q = query(transactionsRef, where("userId", "==", user.uid));
 
-    // Real-time listener for transactions
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const txnList = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -29,12 +27,11 @@ const TransactionHistory = () => {
       setLoading(false);
     });
 
-    return () => unsubscribe(); // Cleanup listener
+    return () => unsubscribe();
   }, [user]);
 
   return (
-    <div className="transaction-container">
-      {/* Transaction Header */}
+    <div className={`transaction-container ${fullWidth ? "full-width" : ""}`}>
       <div className="transaction-header">
         <div className="transaction-text">
           <h2>Transaction History</h2>
@@ -47,7 +44,6 @@ const TransactionHistory = () => {
         </div>
       </div>
 
-      {/* Show Transactions or No Transactions Message */}
       {loading ? (
         <p className="loading-text">Loading transactions...</p>
       ) : transactions.length === 0 ? (

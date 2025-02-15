@@ -1,25 +1,19 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { auth, db } from "../firebase"; // Import Firebase auth & Firestore
+import { auth, db } from "../firebase"; // Import Firebase
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
 import "./RegisterPage.css";
 
+// List of countries
 const countries = [
-  "Afghanistan",
-  "Albania",
-  "Algeria",
-  "Andorra",
-  "Angola",
-  "Argentina",
-  "Armenia",
-  "Australia",
-  "Austria",
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
+  "Argentina", "Armenia", "Australia", "Austria"
 ];
 
 const RegisterPage = () => {
-  const [loading, setLoading] = useState(false); // Show loading indicator
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({
@@ -56,56 +50,65 @@ const RegisterPage = () => {
     }));
   };
 
-  // Handle Register Submission (Firebase Integration)
   const handleRegister = async (e) => {
     e.preventDefault();
-
+  
     if (formValues.password !== formValues.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-
-    setLoading(true); // Start loading
-
+  
+    setLoading(true);
+  
     try {
-      // Step 1: Register User in Firebase Authentication
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        formValues.email,
-        formValues.password
-      );
+      // Register User in Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(auth, formValues.email, formValues.password);
+      await new Promise((resolve) => setTimeout(resolve, 500)); // Ensure UID is assigned
+  
       const user = userCredential.user;
       console.log("User registered:", user);
-
-      // Step 2: Store Additional User Info in Firestore
-      await setDoc(doc(collection(db, "users"), user.uid), {
-        firstName: formValues.firstName,  // ✅ FIXED
-        lastName: formValues.lastName,    // ✅ FIXED
+  
+      // Store User Info in Firestore
+      const userRef = doc(db, "users", user.uid);
+      await setDoc(userRef, {
+        firstName: formValues.firstName,
+        lastName: formValues.lastName,
         email: formValues.email,
         gender: formValues.gender,
         country: formValues.country,
         phone: formValues.phone,
-        password: formValues.password,
+        password: formValues.password, // Consider removing this for security
         userId: user.uid,
         profileImage: "https://randomuser.me/api/portraits/men/75.jpg",
-        username: `${formValues.firstName} ${formValues.lastName}`,  // ✅ FIXED
-        totalBalance: 0,
-        walletBalance: 0,
-        investmentBalance: 0,
+        username: `${formValues.firstName} ${formValues.lastName}`,
+        totalBalance: 0, // Ensure this is stored as a number
+        walletBalance: 0, // Ensure this is stored as a number
+        investmentBalance: 0, // Ensure this is stored as a number
       });
-
-      console.log("User information stored in Firestore");
-
-      // Registration successful: Alert and redirect to login page
+  
+      // Create Wallet Entry for the User
+      const walletRef = doc(db, "wallets", user.uid);
+      await setDoc(walletRef, {
+        BTC: { balance: 0, balanceUSD: 0 },
+        ETH: { balance: 0, balanceUSD: 0 },
+        BNB: { balance: 0, balanceUSD: 0 },
+        DOGE: { balance: 0, balanceUSD: 0 },
+        LTC: { balance: 0, balanceUSD: 0 },
+        USDT: { balance: 0, balanceUSD: 0 },
+      });
+  
+      console.log("User information & wallet stored in Firestore");
+  
       alert("Registration Successful! You can now log in to your dashboard.");
       navigate("/login");
     } catch (error) {
       console.error("Registration failed:", error.message);
       alert("Registration failed: " + error.message);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
+  
 
   return (
     <div className="register-page">
@@ -152,9 +155,7 @@ const RegisterPage = () => {
             onChange={handleInputChange}
             required
           >
-            <option value="" disabled hidden>
-              Select Gender
-            </option>
+            <option value="" disabled hidden>Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
@@ -170,9 +171,7 @@ const RegisterPage = () => {
           >
             <option value="">Select Country</option>
             {countries.map((country, index) => (
-              <option key={index} value={country}>
-                {country}
-              </option>
+              <option key={index} value={country}>{country}</option>
             ))}
           </select>
           <input
@@ -186,7 +185,7 @@ const RegisterPage = () => {
           />
         </div>
         
-        {/* Password and Confirm Password with Visibility Toggle */}
+        {/* Password Fields */}
         <div className="form-group">
           <div className="password-wrapper">
             <input
@@ -202,7 +201,6 @@ const RegisterPage = () => {
               {isPasswordVisible.password ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
             </span>
           </div>
-
           <div className="password-wrapper">
             <input
               type={isPasswordVisible.confirmPassword ? "text" : "password"}
@@ -221,28 +219,15 @@ const RegisterPage = () => {
 
         <div className="form-footer">
           <label className="remember-me">
-            <input
-              type="checkbox"
-              name="rememberMe"
-              checked={formValues.rememberMe}
-              onChange={handleInputChange}
-              required
-            />
+            <input type="checkbox" name="rememberMe" checked={formValues.rememberMe} onChange={handleInputChange} required />
             Remember me
           </label>
-          <a href="/" className="forgot-password">
-            Forgot Password?
-          </a>
         </div>
+        
         <button type="submit" className="submit-button" disabled={loading}>
           {loading ? "Registering..." : "Register"}
         </button>
-        <p className="texting">
-          Already have an account?{" "}
-          <NavLink to="/login" className="login-link">
-            Login
-          </NavLink>
-        </p>
+        <p className="texting">Already have an account? <NavLink to="/login" className="login-link">Login</NavLink></p>
       </form>
     </div>
   );

@@ -12,12 +12,12 @@ const Dashboard = () => {
   const auth = getAuth();
   const db = getFirestore();
   const navigate = useNavigate();
-  
+
   const user = auth.currentUser;
   const userId = user ? user.uid : null;
 
   const [userData, setUserData] = useState({
-    profileImage: "https://randomuser.me/api/portraits/men/75.jpg",
+    profileImage: "", // Empty initially, will default to placeholder if not set
     username: "User",
     totalBalance: 0,
     walletBalance: 0,
@@ -37,6 +37,10 @@ const Dashboard = () => {
   });
 
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  // Default Anonymous Image
+  const defaultProfileImage =
+    "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
 
   // Fetch user data from Firestore
   useEffect(() => {
@@ -122,7 +126,11 @@ const Dashboard = () => {
             <FiBell size={20} className="icon" />
             <div className="user-profile">
               <label htmlFor="imageUpload">
-                <img src={userData.profileImage} alt="User" className="iko clickable" />
+                <img
+                  src={userData.profileImage || defaultProfileImage}
+                  alt="User"
+                  className="iko clickable"
+                />
               </label>
               <input
                 type="file"
@@ -154,8 +162,12 @@ const Dashboard = () => {
               <div className="logout-content">
                 <h3>Are you sure you want to logout?</h3>
                 <div className="logout-actions">
-                  <button className="confirm-logout" onClick={handleLogout}>Yes</button>
-                  <button className="cancel-logout" onClick={() => setShowLogoutModal(false)}>No</button>
+                  <button className="confirm-logout" onClick={handleLogout}>
+                    Yes
+                  </button>
+                  <button className="cancel-logout" onClick={() => setShowLogoutModal(false)}>
+                    No
+                  </button>
                 </div>
               </div>
             </div>

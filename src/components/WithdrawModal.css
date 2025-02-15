@@ -240,3 +240,32 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+/* Spinner Animation */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #fff;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Success Message */
+  .success-message {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .success-message h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: green;
+  }
+  

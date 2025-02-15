@@ -1,10 +1,59 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getAuth } from "firebase/auth";
+import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "./ProfilePage.css";
 import { FaPhone, FaEnvelope, FaFacebookF } from "react-icons/fa";
-import { FaBitcoin, FaEthereum } from "react-icons/fa"; // Crypto Icons
-import { SiRipple, SiLitecoin } from "react-icons/si";  // More Crypto Icons
+import { FaBitcoin, FaEthereum } from "react-icons/fa";
+import { SiRipple, SiLitecoin } from "react-icons/si";
 
 const ProfilePage = () => {
+  const auth = getAuth();
+  const db = getFirestore();
+  const storage = getStorage();
+  const user = auth.currentUser;
+
+  const [userData, setUserData] = useState({
+    firstName: "User",
+    email: user ? user.email : "email@example.com",
+    profileImage: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+  });
+
+  // Fetch user data from Firestore
+  useEffect(() => {
+    if (user) {
+      const fetchUserData = async () => {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          const data = userSnap.data();
+          setUserData({
+            firstName: data.firstName || "User",
+            email: user.email,
+            profileImage: data.profileImage || "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+          });
+        }
+      };
+      fetchUserData();
+    }
+  }, [user, db]);
+
+  // Handle Profile Image Upload
+  const handleImageChange = async (event) => {
+    const file = event.target.files[0];
+    if (file && user) {
+      const storageRef = ref(storage, `profileImages/${user.uid}`);
+      await uploadBytes(storageRef, file);
+      const downloadURL = await getDownloadURL(storageRef);
+
+      setUserData((prev) => ({ ...prev, profileImage: downloadURL }));
+
+      // Update Firestore
+      const userRef = doc(db, "users", user.uid);
+      await updateDoc(userRef, { profileImage: downloadURL });
+    }
+  };
+
   return (
     <div className="settings-container">
       {/* Profile Section */}
@@ -17,15 +66,21 @@ const ProfilePage = () => {
       </div>
 
       <div className="profile-card">
-        <img
-          src="https://randomuser.me/api/portraits/men/75.jpg"
-          alt="User Profile"
-          className="profile-img"
+        <label htmlFor="imageUpload">
+          <img src={userData.profileImage} alt="Profile" className="profile-img clickable" />
+        </label>
+        <input
+          type="file"
+          id="imageUpload"
+          accept="image/*"
+          onChange={handleImageChange}
+          style={{ display: "none" }}
         />
+
         <div className="profile-info">
-          <h2>Thomas Aldox</h2>
-          <p className="username">@thomasdox</p>
-          <p className="join-date">Join on 24 March 2017</p>
+          <h2>{userData.firstName}</h2>
+          <p className="username">@{userData.email}</p>
+          <p className="join-date">Joined on 24 March 2017</p>
           <div className="contact-icons">
             <FaPhone className="icon" />
             <FaEnvelope className="icon" />

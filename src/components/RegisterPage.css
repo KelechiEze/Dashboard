@@ -122,16 +122,6 @@
     color: #4b5563; /* Neutral gray */
   }
   
-  .forgot-password {
-    font-size: 0.9rem;
-    color: #6366f1; /* Blue */
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  
-  .forgot-password:hover {
-    color: #4338ca; /* Darker blue */
-  }
   
   /* Submit Button Styling */
   .submit-button {
@@ -274,10 +264,6 @@
       font-size: 0.8rem; /* Smaller font */
     }
   
-    .forgot-password {
-      font-size: 0.8rem; /* Smaller font */
-    }
-  
     /* Submit Button Styling */
     .submit-button {
       font-size: 0.9rem; /* Smaller font */
@@ -366,9 +352,6 @@
       font-size: 0.8rem; /* Smaller font */
     }
   
-    .forgot-password {
-      font-size: 0.8rem; /* Smaller font */
-    }
   
     /* Submit Button Styling */
     .submit-button {

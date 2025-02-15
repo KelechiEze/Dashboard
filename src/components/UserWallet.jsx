@@ -30,7 +30,7 @@ const UserWallet = () => {
 
       {/* Transaction History (Wrapped in a div for styling) */}
       <div className="transaction-wrapper">
-        <TransactionHistory />
+        <TransactionHistory fullWidth={true} />
       </div>
     </div>
   );
