@@ -5,13 +5,12 @@
     border-radius: 15px;
     width: 100%;
     margin-top: 80px;
-    max-width: 600px; /* Default for Dashboard */
+    max-width: 600px;
     color: white;
     font-family: Arial, sans-serif;
     box-sizing: border-box;
 }
 
-/* Full-width version for UserWallet */
 .transaction-container.full-width {
     max-width: 100%;
 }

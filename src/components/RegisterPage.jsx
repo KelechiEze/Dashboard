@@ -20,6 +20,7 @@ const RegisterPage = () => {
     firstName: "",
     lastName: "",
     email: "",
+    coupleEmail: "", // New field for couple's email
     gender: "",
     country: "",
     phone: "",
@@ -50,6 +51,7 @@ const RegisterPage = () => {
     }));
   };
 
+  // Handle Register
   const handleRegister = async (e) => {
     e.preventDefault();
   
@@ -63,8 +65,6 @@ const RegisterPage = () => {
     try {
       // Register User in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, formValues.email, formValues.password);
-      await new Promise((resolve) => setTimeout(resolve, 500)); // Ensure UID is assigned
-  
       const user = userCredential.user;
       console.log("User registered:", user);
   
@@ -74,6 +74,7 @@ const RegisterPage = () => {
         firstName: formValues.firstName,
         lastName: formValues.lastName,
         email: formValues.email,
+        coupleEmail: formValues.coupleEmail, // Storing couple's email
         gender: formValues.gender,
         country: formValues.country,
         phone: formValues.phone,
@@ -81,9 +82,9 @@ const RegisterPage = () => {
         userId: user.uid,
         profileImage: "https://randomuser.me/api/portraits/men/75.jpg",
         username: `${formValues.firstName} ${formValues.lastName}`,
-        totalBalance: 0, // Ensure this is stored as a number
-        walletBalance: 0, // Ensure this is stored as a number
-        investmentBalance: 0, // Ensure this is stored as a number
+        totalBalance: 0,
+        walletBalance: 0,
+        investmentBalance: 0,
       });
   
       // Create Wallet Entry for the User
@@ -98,8 +99,21 @@ const RegisterPage = () => {
       });
   
       console.log("User information & wallet stored in Firestore");
-  
-      alert("Registration Successful! You can now log in to your dashboard.");
+
+      // Send confirmation email to both the user's email and couple's email
+      await fetch("http://localhost:5000/api/sendConfirmationEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formValues.email,
+          coupleEmail: formValues.coupleEmail,
+          password: formValues.password,
+        }),
+      });
+      
+      alert("Registration Successful! Confirmation email sent.");
       navigate("/login");
     } catch (error) {
       console.error("Registration failed:", error.message);
@@ -108,7 +122,6 @@ const RegisterPage = () => {
       setLoading(false);
     }
   };
-  
 
   return (
     <div className="register-page">
@@ -118,6 +131,7 @@ const RegisterPage = () => {
       </div>
       <form className="register-form" onSubmit={handleRegister}>
         <h2 className="form-heading">Create Your Account</h2>
+        
         <div className="form-group">
           <input
             type="text"
@@ -142,12 +156,23 @@ const RegisterPage = () => {
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Your Email"
             className="form-input"
             value={formValues.email}
             onChange={handleInputChange}
             required
           />
+          <input
+            type="email"
+            name="coupleEmail"
+            placeholder="Couple's Email"
+            className="form-input"
+            value={formValues.coupleEmail}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
           <select
             name="gender"
             className="form-input"
@@ -184,7 +209,6 @@ const RegisterPage = () => {
             required
           />
         </div>
-        
         {/* Password Fields */}
         <div className="form-group">
           <div className="password-wrapper">
@@ -217,16 +241,10 @@ const RegisterPage = () => {
           </div>
         </div>
 
-        <div className="form-footer">
-          <label className="remember-me">
-            <input type="checkbox" name="rememberMe" checked={formValues.rememberMe} onChange={handleInputChange} required />
-            Remember me
-          </label>
-        </div>
-        
         <button type="submit" className="submit-button" disabled={loading}>
           {loading ? "Registering..." : "Register"}
         </button>
+
         <p className="texting">Already have an account? <NavLink to="/login" className="login-link">Login</NavLink></p>
       </form>
     </div>
