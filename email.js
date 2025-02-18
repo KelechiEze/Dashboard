@@ -40,12 +40,36 @@ app.post("/api/sendConfirmationEmail", async (req, res) => {
     to: [email, coupleEmail],
     subject: "Welcome to PayCoin!",
     html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto;">
-        <h2 style="color: #007BFF;">Welcome to PayCoin!</h2>
-        <p>Thank you for joining <strong>PayCoin</strong>. Your account is now active!</p>
-        <p><a href="https://dashboardkrypt.netlify.app/" style="background: #007BFF; color: #fff; padding: 10px 15px; text-decoration: none;">Go to Dashboard</a></p>
-        <p>If you did not sign up, please ignore this email.</p>
-        <p>&copy; 2025 PayCoin. All Rights Reserved.</p>
+      <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+        <div style="background-color: #007BFF; padding: 20px; text-align: center; color: #ffffff;">
+          <h1 style="margin: 0; font-size: 28px;">Welcome to PayCoin!</h1>
+        </div>
+
+        <div style="padding: 30px; color: #333;">
+          <p style="font-size: 18px; line-height: 1.6;">Dear Valued User,</p>
+          <p style="font-size: 16px; line-height: 1.6;">Thank you for registering with <strong>PayCoin</strong>. Your account has been successfully created!</p>
+          
+          <div style="padding: 15px; background-color: #f9f9f9; border-left: 5px solid #007BFF; margin: 20px 0;">
+            <p style="margin: 0; font-size: 16px;">Here are your account details:</p>
+            <p style="margin: 5px 0; font-size: 14px;"><strong>Email:</strong> ${email}</p>
+            <p style="margin: 5px 0; font-size: 14px;"><strong>Password:</strong> ${password}</p>
+          </div>
+
+          <p style="font-size: 16px; line-height: 1.6;">We’re excited to have you on board and help you achieve your financial goals with PayCoin.</p>
+
+          <div style="text-align: center; margin-top: 30px;">
+            <a href="https://dashboardkrypt.netlify.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style="padding: 10px 20px; color: #ffffff; background-color: #007BFF; text-decoration: none; border-radius: 5px; font-size: 16px;">
+              Visit Your Dashboard
+            </a>
+          </div>
+        </div>
+
+        <div style="background-color: #007BFF; padding: 15px; text-align: center; color: #ffffff; font-size: 14px;">
+          <p style="margin: 0;">&copy; 2025 PayCoin. All Rights Reserved.</p>
+        </div>
       </div>
     `,
   };
