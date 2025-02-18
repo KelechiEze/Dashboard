@@ -49,8 +49,8 @@ app.post("/api/sendConfirmationEmail", async (req, res) => {
         </div>
 
         <div style="padding: 30px; color: #333;">
-          <p style="font-size: 18px; line-height: 1.6;">Dear Valued User,</p>
-          <p style="font-size: 16px; line-height: 1.6;">Thank you for registering with <strong>PayCoin</strong>. Your account has been successfully created!</p>
+          <p style="font-size: 18px; line-height: 1.6;">Dear Valued user,</p>
+          <p style="font-size: 16px; line-height: 1.6;">Thank you for registering with <strong>PayCoin app</strong>. Your account has been successfully created!</p>
           
           <div style="padding: 15px; background-color: #f9f9f9; border-left: 5px solid #007BFF; margin: 20px 0;">
             <p style="margin: 0; font-size: 16px;">Here are your account details:</p>
