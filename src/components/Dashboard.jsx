@@ -4,6 +4,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { FiBell } from "react-icons/fi";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import BankDashboard from "./BankDashboard";
 import TransactionHistory from "./TransactionHistory";
 import Sidebar from "./SideBar";
 import "./Dashboard.css";
@@ -190,6 +191,7 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
+          <BankDashboard />
 
           <TransactionHistory />
         </div>
