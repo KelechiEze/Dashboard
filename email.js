@@ -10,11 +10,14 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: "http://localhost:12589", // Updated to match your React frontend
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:12589", "https://dashboardkrypt.netlify.app"], // Allow both localhost and Netlify frontend
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 app.use(bodyParser.json());
 
 // POST route to send confirmation emails
