@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { FiBell } from "react-icons/fi";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaWallet } from "react-icons/fa";
 import BankDashboard from "./BankDashboard";
 import TransactionHistory from "./TransactionHistory";
 import Sidebar from "./SideBar";
@@ -18,7 +18,7 @@ const Dashboard = () => {
   const userId = user ? user.uid : null;
 
   const [userData, setUserData] = useState({
-    profileImage: "", // Empty initially, will default to placeholder if not set
+    profileImage: "",
     username: "User",
     totalBalance: 0,
     walletBalance: 0,
@@ -39,11 +39,9 @@ const Dashboard = () => {
 
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  // Default Anonymous Image
   const defaultProfileImage =
     "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
 
-  // Fetch user data from Firestore
   useEffect(() => {
     if (userId) {
       const fetchUserData = async () => {
@@ -57,7 +55,6 @@ const Dashboard = () => {
     }
   }, [userId, db]);
 
-  // Update profile image
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -66,7 +63,6 @@ const Dashboard = () => {
         const newImage = e.target.result;
         setUserData((prev) => ({ ...prev, profileImage: newImage }));
 
-        // Update in Firestore
         if (userId) {
           const userRef = doc(db, "users", userId);
           await updateDoc(userRef, { profileImage: newImage });
@@ -76,19 +72,16 @@ const Dashboard = () => {
     }
   };
 
-  // Update username
   const handleUsernameChange = async (e) => {
     const newUsername = e.target.value;
     setUserData((prev) => ({ ...prev, username: newUsername }));
 
-    // Update in Firestore
     if (userId) {
       const userRef = doc(db, "users", userId);
       await updateDoc(userRef, { username: newUsername });
     }
   };
 
-  // Toggle balance visibility
   const toggleBalanceVisibility = (key) => {
     if (!isBalanceVisible[key]) {
       let count = 0;
@@ -111,10 +104,9 @@ const Dashboard = () => {
     }
   };
 
-  // Logout function
   const handleLogout = async () => {
     await signOut(auth);
-    navigate("/login"); // Redirect to login page
+    navigate("/login");
   };
 
   return (
@@ -156,7 +148,6 @@ const Dashboard = () => {
 
         <h1 className="welcome-message">Welcome to PayCoin Dashboard</h1>
 
-        {/* Logout Confirmation Modal */}
         {showLogoutModal && (
           <div className="logout-overlay">
             <div className="logout-modal">
@@ -188,11 +179,16 @@ const Dashboard = () => {
                     {isBalanceVisible[key] ? <FaEyeSlash size={24} /> : <FaEye size={24} />}
                   </button>
                 </div>
+
+                {/* Withdraw Button */}
+                <Link to="/dashboard/UserWallet" className="withdraw-button">
+                  <FaWallet className="wallet-icon" /> Withdraw
+                </Link>
               </div>
             ))}
           </div>
-          <BankDashboard />
 
+          <BankDashboard />
           <TransactionHistory />
         </div>
       </div>

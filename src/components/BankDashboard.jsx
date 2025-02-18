@@ -33,10 +33,10 @@ const BankDashboard = () => {
           </div>
         </div>
 
-        {/* Withdraw Button Section */}
+        {/* Withdraw Button Section 
         <Link to="/dashboard/UserWallet" className="withdraw-button">
           <FaWallet className="wallet-icon" /> Withdraw
-        </Link>
+        </Link>*/}
       </div>
     </div>
   );

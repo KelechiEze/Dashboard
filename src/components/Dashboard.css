@@ -142,8 +142,8 @@ body, html {
 }
 
 .stats-card {
-  flex: 0 1 25%; /* Reduce card width */
-  padding: 20px; /* Reduce padding for a smaller size */
+  flex: 0 1 30%; /* Reduce card width */
+  padding: 40px; /* Reduce padding for a smaller size */
   border-radius: 12px;
   color: white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
@@ -194,6 +194,38 @@ body, html {
   position: relative;
   z-index: 1;
 }
+
+/* Withdraw Button */
+.withdraw-button {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Spacing between icon and text */
+  padding: 12px 14px;
+  border: none;
+  border-radius: 10px;
+  background-color: #007BFF;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none; /* Link styling */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.withdraw-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.withdraw-button:active {
+  transform: translateY(1px);
+}
+
+.wallet-icon {
+  font-size: 20px;
+}
+
 
 /* Balance Container */
 .balance-container {
