@@ -12,11 +12,23 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: ["http://localhost:12589", "https://dashboardkrypt.netlify.app"], // Allow both localhost and Netlify frontend
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        "http://localhost:12589",
+        "https://dashboardkrypt.netlify.app",
+      ];
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
+    credentials: true, // If you're sending cookies or authentication headers
   })
 );
+
 
 app.use(bodyParser.json());
 
