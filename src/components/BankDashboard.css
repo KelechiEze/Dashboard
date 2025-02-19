@@ -207,3 +207,238 @@
 .cancel-button:hover {
   background-color: #bbb;
 }
+/* Default Styles (already included) */
+
+/* Responsive Design for 375px Screens */
+@media (max-width: 375px) {
+  /* Adjust Main Container */
+  .banking-container {
+    max-width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  /* Title */
+  .title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  /* Layout - Stack Items */
+  .dashboard {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  /* Card Section */
+  .card-container {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Card Shadow Adjustments */
+  .card-shadow {
+    top: 5px;
+    left: 5px;
+  }
+
+  .card-shadow.second {
+    top: 3px;
+    left: 3px;
+  }
+
+  /* Bank Card */
+  .bank-card {
+    padding: 15px;
+    height: auto;
+  }
+
+  .chip-icon {
+    font-size: 18px;
+  }
+
+  .card-number {
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .card-details {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .label {
+    font-size: 11px;
+  }
+
+  .value {
+    font-size: 13px;
+  }
+
+  /* Card Logo */
+  .card-logo {
+    justify-content: center;
+  }
+
+  .circle {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Adjust Add Card Button */
+  .add-card-button {
+    font-size: 12px;
+    padding: 6px 12px;
+    margin-top: 8px;
+  }
+
+  /* Modal Overlay */
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  /* Modal Content */
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  /* Modal Inputs */
+  .modal-content input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  /* Modal Buttons */
+  .modal-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .save-button,
+  .cancel-button {
+    font-size: 12px;
+    padding: 6px;
+    width: 100%;
+  }
+}
+
+/* Default Styles (already included) */
+
+/* Responsive Design for 375px Screens */
+@media (max-width: 425px) {
+  /* Adjust Main Container */
+  .banking-container {
+    max-width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  /* Title */
+  .title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  /* Layout - Stack Items */
+  .dashboard {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  /* Card Section */
+  .card-container {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Card Shadow Adjustments */
+  .card-shadow {
+    top: 5px;
+    left: 5px;
+  }
+
+  .card-shadow.second {
+    top: 3px;
+    left: 3px;
+  }
+
+  /* Bank Card */
+  .bank-card {
+    padding: 15px;
+    height: auto;
+  }
+
+  .chip-icon {
+    font-size: 18px;
+  }
+
+  .card-number {
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .card-details {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .label {
+    font-size: 11px;
+  }
+
+  .value {
+    font-size: 13px;
+  }
+
+  /* Card Logo */
+  .card-logo {
+    justify-content: center;
+  }
+
+  .circle {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Adjust Add Card Button */
+  .add-card-button {
+    font-size: 12px;
+    padding: 6px 12px;
+    margin-top: 8px;
+  }
+
+  /* Modal Overlay */
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  /* Modal Content */
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  /* Modal Inputs */
+  .modal-content input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  /* Modal Buttons */
+  .modal-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .save-button,
+  .cancel-button {
+    font-size: 12px;
+    padding: 6px;
+    width: 100%;
+  }
+}
