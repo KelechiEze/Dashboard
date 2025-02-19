@@ -189,7 +189,6 @@ const Dashboard = () => {
           </div>
 
           <BankDashboard />
-          <TransactionHistory />
         </div>
       </div>
     </div>
