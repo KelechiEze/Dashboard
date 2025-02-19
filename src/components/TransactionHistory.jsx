@@ -15,14 +15,21 @@ const TransactionHistory = ({ fullWidth }) => {
       return;
     }
 
+    // Reference to the transactions collection
     const transactionsRef = collection(db, "transactions");
+
+    // Query to get transactions for the logged-in user
     const q = query(transactionsRef, where("userId", "==", user.uid));
 
+    // Real-time listener for transactions
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const txnList = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
+
+      // Sort transactions by time (latest first)
+      txnList.sort((a, b) => b.time.toMillis() - a.time.toMillis());
       setTransactions(txnList);
       setLoading(false);
     });
@@ -44,6 +51,7 @@ const TransactionHistory = ({ fullWidth }) => {
         </div>
       </div>
 
+      {/* Loading State */}
       {loading ? (
         <p className="loading-text">Loading transactions...</p>
       ) : transactions.length === 0 ? (
@@ -52,6 +60,7 @@ const TransactionHistory = ({ fullWidth }) => {
         <div className="transaction-list">
           {transactions.map((txn) => (
             <div key={txn.id} className="transaction-item">
+              {/* Transaction Type Icon */}
               <div className="icon">
                 {txn.type === "Deposit" ? (
                   <FaArrowUp color="green" />
@@ -59,12 +68,34 @@ const TransactionHistory = ({ fullWidth }) => {
                   <FaArrowDown color="red" />
                 )}
               </div>
+
+              {/* Transaction Type */}
               <span className="txn-type">{txn.type}</span>
-              <span className="txn-time">{txn.time}</span>
+
+              {/* Transaction Time */}
+              <span className="txn-time">
+                {txn.time?.toMillis
+                  ? new Date(txn.time.toMillis()).toLocaleString()
+                  : "N/A"}
+              </span>
+
+              {/* Transaction Amount */}
               <div className="txn-amount">
                 <FaBitcoin className="btc-icon" /> {txn.amount}
               </div>
-              <span className={`txn-status ${txn.status.toLowerCase()}`}>{txn.status}</span>
+
+              {/* Transaction Status */}
+              <span
+                className={`txn-status ${
+                  txn.status === "Completed"
+                    ? "green"
+                    : txn.status === "Pending"
+                    ? "gray"
+                    : "red"
+                }`}
+              >
+                {txn.status}
+              </span>
             </div>
           ))}
         </div>

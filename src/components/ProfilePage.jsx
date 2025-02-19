@@ -3,7 +3,6 @@ import { getAuth } from "firebase/auth";
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "./ProfilePage.css";
-import { FaPhone, FaEnvelope, FaFacebookF } from "react-icons/fa";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiRipple, SiLitecoin } from "react-icons/si";
 
@@ -19,12 +18,21 @@ const ProfilePage = () => {
     profileImage: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
   });
 
+  const [cryptoBalances, setCryptoBalances] = useState({
+    BTC: 0,
+    ETH: 0,
+    USDT: 0,
+    LTC: 0,
+  });
+
   // Fetch user data from Firestore
   useEffect(() => {
     if (user) {
       const fetchUserData = async () => {
+        // Get user data
         const userRef = doc(db, "users", user.uid);
         const userSnap = await getDoc(userRef);
+
         if (userSnap.exists()) {
           const data = userSnap.data();
           setUserData({
@@ -33,7 +41,24 @@ const ProfilePage = () => {
             profileImage: data.profileImage || "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
           });
         }
+
+        // Get wallet balances
+        const walletRef = doc(db, "wallets", user.uid);
+        const walletSnap = await getDoc(walletRef);
+
+        if (walletSnap.exists()) {
+          const walletData = walletSnap.data();
+
+          // Update crypto balances (fallback to 0 if not present)
+          setCryptoBalances({
+            BTC: walletData.BTC?.balance || 0,
+            ETH: walletData.ETH?.balance || 0,
+            USDT: walletData.USDT?.balance || 0,
+            LTC: walletData.LTC?.balance || 0,
+          });
+        }
       };
+
       fetchUserData();
     }
   }, [user, db]);
@@ -48,7 +73,7 @@ const ProfilePage = () => {
 
       setUserData((prev) => ({ ...prev, profileImage: downloadURL }));
 
-      // Update Firestore
+      // Update Firestore with the new profile image URL
       const userRef = doc(db, "users", user.uid);
       await updateDoc(userRef, { profileImage: downloadURL });
     }
@@ -67,7 +92,11 @@ const ProfilePage = () => {
 
       <div className="profile-card">
         <label htmlFor="imageUpload">
-          <img src={userData.profileImage} alt="Profile" className="profile-img clickable" />
+          <img
+            src={userData.profileImage}
+            alt="Profile"
+            className="profile-img clickable"
+          />
         </label>
         <input
           type="file"
@@ -80,12 +109,6 @@ const ProfilePage = () => {
         <div className="profile-info">
           <h2>{userData.firstName}</h2>
           <p className="username">@{userData.email}</p>
-          <p className="join-date">Joined on 24 March 2017</p>
-          <div className="contact-icons">
-            <FaPhone className="icon" />
-            <FaEnvelope className="icon" />
-            <FaFacebookF className="icon" />
-          </div>
         </div>
         <button className="edit-profile-btn">Edit Profile</button>
       </div>
@@ -96,22 +119,22 @@ const ProfilePage = () => {
         <div className="coins">
           <div className="coin-card btc">
             <FaBitcoin className="crypto-icon" />
-            <h2>$65,123</h2>
+            <h2>{cryptoBalances.BTC}</h2>
             <p>BTC</p>
           </div>
           <div className="coin-card eth">
             <FaEthereum className="crypto-icon" />
-            <h2>$2,551</h2>
+            <h2>{cryptoBalances.ETH}</h2>
             <p>ETH</p>
           </div>
           <div className="coin-card rpl">
             <SiRipple className="crypto-icon" />
-            <h2>$0,55</h2>
+            <h2>{cryptoBalances.USDT}</h2>
             <p>USDT</p>
           </div>
           <div className="coin-card ltc">
             <SiLitecoin className="crypto-icon" />
-            <h2>$65,123</h2>
+            <h2>{cryptoBalances.LTC}</h2>
             <p>LTC</p>
           </div>
         </div>
