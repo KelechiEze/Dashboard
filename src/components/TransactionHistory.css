@@ -167,3 +167,59 @@
         font-size: 14px;
     }
 }
+
+/* Responsive Design for 375px Screens */
+@media (max-width: 375px) {
+    .transaction-container {
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 60px;
+    }
+
+    .transaction-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .transaction-text h2 {
+        font-size: 22px;
+    }
+
+    .transaction-text p {
+        font-size: 11px;
+    }
+
+    .filter-buttons {
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+
+    .transaction-item {
+        grid-template-columns: 1fr 1fr; /* Reduce to two columns for smaller screens */
+        gap: 5px;
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .transaction-item .icon {
+        width: 28px;
+        height: 28px;
+        font-size: 10px;
+        margin-left: 0;
+    }
+
+    .txn-amount, .txn-type, .txn-time, .txn-status {
+        font-size: 12px;
+    }
+
+    .expand-btn {
+        padding: 10px;
+        width: 40px;
+        font-size: 12px;
+    }
+}

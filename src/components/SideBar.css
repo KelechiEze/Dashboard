@@ -1,311 +1,238 @@
+/* General Styles */
 body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #101322;
-    color: white;
-    animation: fadeIn 1s ease-in-out;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #101322;
+  color: white;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-
-  @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromTop {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes zoomIn {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-  
-  /* Sidebar */
-  .sidebar {
-    position: fixed; /* Keeps the sidebar in a fixed position */
-    top: 0;
-    left: 0;
-    height: 100vh; /* Full height of the viewport */
-    width: 200px; /* Sidebar width */
-    background-color: #1a202c; /* Adjust your preferred color */
-    color: white;
-    display: flex;
-    flex-direction: column;
-    z-index: 1000; /* Ensures the sidebar stays above other elements */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
+  to {
+    opacity: 1;
   }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    padding: 20px;
-    color: yellow;
-    margin-bottom: 30px;
-  }
-  
-  /* Sidebar Navigation Links */
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 200px;
+  background-color: #1a202c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: left 0.3s ease;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+  color: yellow;
+  margin-bottom: 30px;
+}
+
+/* Sidebar Links */
 .nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 0;
-    list-style: none;
-    margin-top: 30px;
-  }
-  
-  .nav-links a,
-  .dropdown-btn {
-    display: flex;
-    align-items: center;
-    padding: 10px 40px;
-    color: white;
-    margin-bottom: 30px;
-    border: none;
-    text-decoration: none;
-    font-size: 15px;
-    background-color: transparent;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .nav-links a:hover,
-  .dropdown-btn:hover {
-    background-color: #292e4f; /* Subtle hover effect */
-    color: #007bff /* Highlight on hover */
-  }
-  
-  /* Dropdown Container */
-  .dropdown {
-    position: relative;
-  }
-  
-  /* Dropdown Button */
-  .dropdown-btn {
-    justify-content: space-between; /* Align text and dropdown icon */
-    gap: 10px;
-  }
-  
-  /* Dropdown Icon */
-  .dropdown-icon {
-    transition: transform 0.3s ease;
-  }
-  
-  .dropdown-icon.open {
-    transform: rotate(180deg); /* Rotate chevron when open */
-  }
-  
-  /* Dropdown Menu */
-  .dropdown-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: absolute;
-    top: 100%; /* Below the dropdown button */
-    left: 0;
-    width: 100%; /* Matches button width */
-    background-color: #1b1f3b;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    z-index: 10;
-    animation: fadeIn 0.3s ease-in-out;
-  }
-  
-  /* Dropdown Links */
-  .dropdown-link {
-    padding: 10px 15px;
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .dropdown-link:hover {
-    background-color: #292e4f; /* Matches nav link hover */
-    color: yellow;
-  }
-
-  /* Responsive Styles for 375px Screens */
-@media screen and (max-width: 375px) {
-    
-    /* Sidebar Adjustments */
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -250px; /* Initially hidden off-screen */
-        width: 250px; /* Sidebar width */
-        height: 100vh;
-        background-color: #1e1e2d;
-        transition: left 0.3s ease; /* Smooth sliding effect */
-        z-index: 1000;
-        padding: 20px;
-        overflow-y: auto; /* Enable scrolling for content */
-    }
-
-    .logo {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
-    /* Adjust Navigation Links */
-    .nav-links {
-        gap: 10px;
-    }
-
-    .nav-links a, .dropdown-btn {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    /* Dropdown Menu */
-    .dropdown-menu {
-        gap: 8px;
-        font-size: 13px;
-    }
-
-    /* Reduce Sidebar Navigation Size */
-    .sidebar {
-        width: 180px;
-        padding: 15px;
-    }
-
-    /* Improve Dropdown Touch Usability */
-    .dropdown-menu {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    /* Hide Sidebar on Mobile */
-    .dashboard-container {
-        flex-direction: column;
-    }
-
-    /* Adjust Button Spacing */
-    .dropdown-btn {
-        font-size: 13px;
-        padding: 8px 10px;
-    }
-}
- /* Responsive Styles for 375px Screens */
- @media screen and (max-width: 425px) {
-    
-    /* Sidebar Adjustments */
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -250px; /* Initially hidden off-screen */
-        width: 250px; /* Sidebar width */
-        height: 100vh;
-        background-color: #1e1e2d;
-        transition: left 0.3s ease; /* Smooth sliding effect */
-        z-index: 1000;
-        padding: 20px;
-        overflow-y: auto; /* Enable scrolling for content */
-    }
-
-    .logo {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
-    /* Adjust Navigation Links */
-    .nav-links {
-        gap: 10px;
-    }
-
-    .nav-links a, .dropdown-btn {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    /* Dropdown Menu */
-    .dropdown-menu {
-        gap: 8px;
-        font-size: 13px;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0;
+  list-style: none;
+  margin-top: 30px;
 }
 
+/* Remove box-shadow and extra styling from all links including "My Wallet" */
+.nav-links a, .dropdown-btn {
+  display: flex;
+  align-items: center;
+  padding: 10px 40px;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  background-color: transparent !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Sidebar link hover effects */
+.nav-links a:hover, .dropdown-btn:hover {
+  background-color: #292e4f;
+  color: #007bff;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #1b1f3b;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.dropdown-link {
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-link:hover {
+  background-color: #292e4f;
+  color: yellow;
+}
+
+/* Hamburger Icon */
+.hamburger-icon {
+  display: none; /* Hidden by default (visible on mobile screens) */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 24px;
+  z-index: 1100;
+  cursor: pointer;
+}
+
+/* Overlay to close sidebar when clicking outside */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+/* Hover and Animation Effects */
 .sidebar, .nav-links a, .dropdown-button, .stats-card, .graph-container {
-    transition: all 0.3s ease-in-out; /* Smooth transitions for hover and resize */
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar:hover {
+  background-color: #2C3055;
+}
+
+.nav-links a:hover, .dropdown-button:hover {
+  transform: translateX(5px);
+  color: yellow;
+}
+
+.stats-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.graph-container:hover {
+  transform: scale(1.02);
+  background-color: #24284A;
+}
+
+.user-avatar:hover {
+  transform: rotate(360deg);
+  transition: transform 0.6s ease-in-out;
+}
+
+.topbar {
+  transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.topbar:hover {
+  background-color: #24284A;
+}
+
+/* Dropdown menu smooth expansion */
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  max-height: 500px;
+}
+
+/* Responsive Sidebar Styles */
+
+/* Desktop Screens */
+@media (min-width: 376px) {
+  .sidebar {
+    left: 0; /* Sidebar visible by default on larger screens */
+    width: 200px; /* Standard sidebar width */
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    z-index: 1000;
   }
-  
-  /* Sidebar hover effect */
-  .sidebar:hover {
-    background-color: #2C3055; /* Slightly lighter background on hover */
+
+  .overlay {
+    display: none; /* No overlay on larger screens */
   }
-  
-  /* Navigation links hover effect */
-  .nav-links a:hover, .dropdown-button:hover {
-    transform: translateX(5px); /* Slide slightly to the right */
-    color: yellow;
+
+  .hamburger-icon {
+    display: none; /* Hide hamburger on larger screens */
   }
-  
-  /* Stats card hover animation */
-  .stats-card:hover {
-    transform: scale(1.05); /* Subtle zoom effect on hover */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
+}
+
+/* Mobile Screens */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%; /* Full width sidebar on mobile */
+    left: -100%; /* Hidden by default on mobile */
   }
-  
-  /* Graph container hover effect */
-  .graph-container:hover {
-    transform: scale(1.02); /* Slight zoom on hover */
-    background-color: #24284A; /* Change background color */
+
+  .sidebar.open {
+    left: 0; /* Slide in sidebar on mobile */
   }
-  
-  /* User avatar hover animation */
-  .user-avatar:hover {
-    transform: rotate(360deg); /* Rotate on hover */
-    transition: transform 0.6s ease-in-out; /* Smooth rotation animation */
+
+  .hamburger-icon {
+    display: block; /* Show hamburger on mobile screens */
   }
-  
-  /* Smooth transition for topbar items */
-  .topbar {
-    transition: background-color 0.3s ease, padding 0.3s ease;
+
+  .overlay {
+    display: block; /* Show overlay on mobile */
   }
-  
-  .topbar:hover {
-    background-color: #24284A; /* Slight color change */
+
+  /* Improve sidebar link spacing and readability */
+  .nav-links {
+    width: 100%;
   }
-  
-  /* Dropdown menu smooth expansion */
-  .dropdown-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+
+  .nav-links a {
+    padding: 12px 20px;
+    text-align: left;
+    font-size: 16px;
   }
-  
-  .dropdown:hover .dropdown-content {
-    max-height: 500px; /* Expand smoothly */
-  }
-  
+}

@@ -1,135 +1,356 @@
 .settings-container {
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-    margin-top: 60px;
-    font-family: Arial, sans-serif;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  margin-top: 60px;
+  font-family: Arial, sans-serif;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-text h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.profile-text p {
+  margin: 2px 0;
+  font-size: 12px;
+  color: gray;
+}
+
+.profile-options {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Profile Card */
+.profile-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.username {
+  color: gray;
+  font-size: 14px;
+}
+
+.join-date {
+  font-size: 12px;
+  color: gray;
+}
+
+/* Contact Icons */
+.contact-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.icon {
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 5px;
+  background: #6200ea;
+  color: white;
+}
+
+/* Edit Profile Button */
+.edit-profile-btn {
+  margin-left: auto;
+  padding: 8px 15px;
+  border: none;
+  background: lightgray;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Coin Holdings Section */
+.coin-holding h3 {
+  margin-top: 20px;
+}
+
+.coins {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.coin-card {
+  flex: 1 1 calc(50% - 10px);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.crypto-icon {
+  font-size: 30px;
+}
+
+/* Coin Colors */
+.btc {
+  background: #f4a261;
+  color: #fff;
+}
+
+.eth {
+  background: #e0aaff;
+  color: #6a0572;
+}
+
+.rpl {
+  background: #8ecae6;
+  color: #023047;
+}
+
+.ltc {
+  background: #8d99ae;
+  color: #fff;
+}
+
+/* Responsive Styling for 375px Screens */
+@media (max-width: 375px) {
+  .settings-container {
+      padding: 15px;
+      margin-top: 40px;
+      border-radius: 8px;
   }
-  
+
   .profile-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
   }
-  
+
   .profile-text h3 {
-    margin: 0;
-    font-size: 18px;
+      font-size: 16px;
   }
-  
+
   .profile-text p {
-    margin: 2px 0;
-    font-size: 12px;
-    color: gray;
+      font-size: 11px;
   }
-  
-  .profile-options {
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
+
   .profile-card {
-    display: flex;
-    align-items: center;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+      flex-direction: column;
+      text-align: center;
+      padding: 15px;
   }
-  
+
   .profile-img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin-right: 15px;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+      margin-right: 0;
   }
-  
+
   .profile-info h2 {
-    margin: 0;
-    font-size: 20px;
+      font-size: 18px;
   }
-  
+
   .username {
-    color: gray;
-    font-size: 14px;
+      font-size: 13px;
   }
-  
+
   .join-date {
-    font-size: 12px;
-    color: gray;
+      font-size: 11px;
   }
-  
+
   .contact-icons {
-    display: flex;
-    gap: 10px;
-    margin-top: 5px;
+      justify-content: center;
   }
-  
-  .icon {
-    font-size: 18px;
-    padding: 8px;
-    border-radius: 5px;
-    background: #6200ea;
-    color: white;
-  }
-  
+
   .edit-profile-btn {
-    margin-left: auto;
-    padding: 8px 15px;
-    border: none;
-    background: lightgray;
-    cursor: pointer;
-    border-radius: 5px;
+      margin-left: 0;
+      margin-top: 10px;
+      width: 100%;
   }
-  
-  .coin-holding h3 {
-    margin-top: 20px;
-  }
-  
+
   .coins {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
+      gap: 8px;
+      justify-content: center;
   }
-  
+
   .coin-card {
-    flex: 1 1 calc(50% - 10px);
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+      flex: 1 1 calc(50% - 8px);
+      padding: 10px;
+      font-size: 14px;
   }
-  
+
   .crypto-icon {
-    font-size: 30px;
+      font-size: 24px;
   }
-  
-  .btc {
-    background: #f4a261;
-    color: #fff;
+}
+
+/* Responsive Styling for 375px Screens */
+@media (max-width: 425px) {
+  .settings-container {
+      padding: 15px;
+      margin-top: 40px;
+      border-radius: 8px;
   }
-  
-  .eth {
-    background: #e0aaff;
-    color: #6a0572;
+
+  .profile-header {
+      flex-direction: column;
+      align-items: flex-start;
   }
-  
-  .rpl {
-    background: #8ecae6;
-    color: #023047;
+
+  .profile-text h3 {
+      font-size: 16px;
   }
-  
-  .ltc {
-    background: #8d99ae;
-    color: #fff;
+
+  .profile-text p {
+      font-size: 11px;
   }
-  
+
+  .profile-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 15px;
+  }
+
+  .profile-img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+      margin-right: 0;
+  }
+
+  .profile-info h2 {
+      font-size: 18px;
+  }
+
+  .username {
+      font-size: 13px;
+  }
+
+  .join-date {
+      font-size: 11px;
+  }
+
+  .contact-icons {
+      justify-content: center;
+  }
+
+  .edit-profile-btn {
+      margin-left: 0;
+      margin-top: 10px;
+      width: 100%;
+  }
+
+  .coins {
+      gap: 8px;
+      justify-content: center;
+  }
+
+  .coin-card {
+      flex: 1 1 calc(50% - 8px);
+      padding: 10px;
+      font-size: 14px;
+  }
+
+  .crypto-icon {
+      font-size: 24px;
+  }
+}
+
+/* Responsive Styling for 375px Screens */
+@media (max-width: 768px) {
+  .settings-container {
+      padding: 15px;
+      margin-top: 40px;
+      border-radius: 8px;
+  }
+
+  .profile-header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .profile-text h3 {
+      font-size: 16px;
+  }
+
+  .profile-text p {
+      font-size: 11px;
+  }
+
+  .profile-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 15px;
+  }
+
+  .profile-img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+      margin-right: 0;
+  }
+
+  .profile-info h2 {
+      font-size: 18px;
+  }
+
+  .username {
+      font-size: 13px;
+  }
+
+  .join-date {
+      font-size: 11px;
+  }
+
+  .contact-icons {
+      justify-content: center;
+  }
+
+  .edit-profile-btn {
+      margin-left: 0;
+      margin-top: 10px;
+      width: 100%;
+  }
+
+  .coins {
+      gap: 8px;
+      justify-content: center;
+  }
+
+  .coin-card {
+      flex: 1 1 calc(50% - 8px);
+      padding: 10px;
+      font-size: 14px;
+  }
+
+  .crypto-icon {
+      font-size: 24px;
+  }
+}
