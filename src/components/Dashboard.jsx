@@ -5,7 +5,6 @@ import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { FiBell } from "react-icons/fi";
 import { FaEye, FaEyeSlash, FaWallet } from "react-icons/fa";
 import BankDashboard from "./BankDashboard";
-import TransactionHistory from "./TransactionHistory";
 import Sidebar from "./SideBar";
 import "./Dashboard.css";
 
@@ -173,7 +172,13 @@ const Dashboard = () => {
                 <h4>{key.replace("Balance", " Balance")}</h4>
                 <div className="balance-container">
                   <h1>
-                    {isBalanceVisible[key] ? `$${displayedBalance[key].toFixed(2)}` : "****"}
+                    {isBalanceVisible[key]
+                      ? `$${displayedBalance[key]
+                          .toLocaleString(undefined, {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}`
+                      : "****"}
                   </h1>
                   <button className="eye-icon" onClick={() => toggleBalanceVisibility(key)}>
                     {isBalanceVisible[key] ? <FaEyeSlash size={24} /> : <FaEye size={24} />}
