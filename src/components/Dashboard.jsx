@@ -39,7 +39,8 @@ const Dashboard = () => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const defaultProfileImage =
-    "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
+       "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+
 
   useEffect(() => {
     if (userId) {
